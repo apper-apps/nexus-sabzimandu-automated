@@ -1,30 +1,76 @@
-import React, { useState, useEffect } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import { categoryService } from "@/services/api/categoryService";
+import { productService } from "@/services/api/productService";
+import { recipeBundleService } from "@/services/api/recipeBundleService";
+import ApperIcon from "@/components/ApperIcon";
 import ProductCard from "@/components/molecules/ProductCard";
 import CategoryCard from "@/components/molecules/CategoryCard";
-import Button from "@/components/atoms/Button";
-import Badge from "@/components/atoms/Badge";
-import ApperIcon from "@/components/ApperIcon";
 import Loading from "@/components/ui/Loading";
 import Error from "@/components/ui/Error";
-import { productService } from "@/services/api/productService";
-import { categoryService } from "@/services/api/categoryService";
+import Badge from "@/components/atoms/Badge";
+import Button from "@/components/atoms/Button";
 import { useLanguage } from "@/hooks/useLanguage";
 import { useCart } from "@/hooks/useCart";
-import { recipeBundleService } from "@/services/api/recipeBundleService";
 
 const Home = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const { t } = useLanguage();
-  const { addBundleToCart } = useCart();
+const { t } = useLanguage();
+  const { addBundleToCart, addToCart } = useCart();
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
   const [recipeBundles, setRecipeBundles] = useState([]);
   const [selectedRecipe, setSelectedRecipe] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
+  const [deals] = useState([
+    {
+      Id: 'deal-1',
+      name: 'Biryani Combo Deal',
+      nameUrdu: 'بریانی کمبو ڈیل',
+      originalPrice: 850,
+      price: 650,
+      discount: 25,
+      unit: 'combo',
+      images: ['https://images.unsplash.com/photo-1563379091339-03246963d73a?w=400&h=300&fit=crop'],
+      description: 'Complete biryani ingredients with basmati rice, spices, and fresh meat',
+      category: 'combo',
+      vendorName: 'SabziMandu Deals',
+      rating: 4.8,
+      weightOptions: ['1 combo']
+    },
+    {
+      Id: 'deal-2', 
+      name: 'BBQ Night Special',
+      nameUrdu: 'بی بی کیو رات کا خاص',
+      originalPrice: 1200,
+      price: 899,
+      discount: 25,
+      unit: 'pack',
+      images: ['https://images.unsplash.com/photo-1544025162-d76694265947?w=400&h=300&fit=crop'],
+      description: 'Premium meat cuts with BBQ spices and marinades',
+      category: 'combo',
+      vendorName: 'SabziMandu Deals',
+      rating: 4.9,
+      weightOptions: ['1 pack']
+    },
+    {
+      Id: 'deal-3',
+      name: 'Desi Breakfast Bundle',
+      nameUrdu: 'دیسی ناشتہ بنڈل',
+      originalPrice: 450,
+      price: 320,
+      discount: 29,
+      unit: 'bundle',
+      images: ['https://images.unsplash.com/photo-1586201375761-83865001e31c?w=400&h=300&fit=crop'],
+      description: 'Traditional Pakistani breakfast essentials - paratha, eggs, and chai',
+      category: 'combo',
+      vendorName: 'SabziMandu Deals',
+      rating: 4.6,
+      weightOptions: ['1 bundle']
+    }
+  ]);
 const loadData = async () => {
     try {
       setLoading(true);
@@ -303,23 +349,92 @@ Rs. {bundle.totalPrice}
         </div>
       </div>
 
-      {/* Fresh Deals */}
-      <div className="px-4">
+{/* Special Deals Section */}
+      <div className="px-4 mb-6">
         <div className="bg-gradient-to-r from-warning/10 to-secondary/10 rounded-card p-4 mb-4">
           <div className="flex items-center justify-between">
             <div>
               <h3 className="font-display font-bold text-gray-900 flex items-center">
                 <ApperIcon name="Zap" size={18} className="text-warning mr-2" />
-                {t("Fresh Deals", "تازہ ڈیلز")}
+                {t("Special Deals", "خصوصی ڈیلز")}
               </h3>
               <p className="text-sm text-gray-600 font-body">
-                {t("Limited time offers", "محدود وقت کی پیشکش")}
+                {t("Pakistani cuisine combos at great prices", "بہترین قیمتوں پر پاکستانی کھانے کے کمبو")}
               </p>
             </div>
             <Badge variant="warning" size="lg">
-              {t("Today Only", "صرف آج")}
+              {t("Limited Time", "محدود وقت")}
             </Badge>
           </div>
+        </div>
+        
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
+          {deals.map((deal) => (
+            <div key={deal.Id} className="bg-white rounded-card shadow-card hover:shadow-elevated transition-all duration-300 hover:scale-105 overflow-hidden">
+              <div className="relative">
+                <img 
+                  src={deal.images[0]}
+                  alt={deal.name}
+                  className="w-full h-32 object-cover"
+                  loading="lazy"
+                />
+                <Badge 
+                  variant="accent" 
+                  size="sm" 
+                  className="absolute top-2 left-2"
+                >
+                  {deal.discount}% {t("OFF", "رعایت")}
+                </Badge>
+                <div className="absolute top-2 right-2 bg-white/90 backdrop-blur-sm rounded-full p-1">
+                  <div className="w-2 h-2 bg-success rounded-full"></div>
+                </div>
+              </div>
+              
+              <div className="p-3">
+                <h4 className="font-display font-semibold text-gray-900 text-sm mb-1 line-clamp-2">
+                  {t(deal.name, deal.nameUrdu)}
+                </h4>
+                <p className="text-xs text-gray-600 font-body mb-2 line-clamp-2">
+                  {deal.description}
+                </p>
+                
+                <div className="flex items-center justify-between mb-2">
+                  <div className="flex items-center space-x-2">
+                    <span className="text-xs text-gray-500 line-through">
+                      Rs. {deal.originalPrice.toLocaleString()}
+                    </span>
+                    <span className="text-lg font-display font-bold text-emerald-600">
+                      Rs. {deal.price.toLocaleString()}
+                    </span>
+                  </div>
+                  <div className="flex items-center space-x-1">
+                    <ApperIcon name="Star" size={12} className="text-warning fill-current" />
+                    <span className="text-xs text-gray-600">{deal.rating}</span>
+                  </div>
+                </div>
+                
+                <div className="flex items-center justify-between mb-2">
+                  <Badge variant="secondary" size="sm" className="text-xs">
+                    <ApperIcon name="Award" size={10} className="mr-1" />
+                    {Math.floor(deal.price / 10)} {t("Points", "پوائنٹس")}
+                  </Badge>
+                  <span className="text-xs text-emerald-600 font-medium">
+                    {t("Save", "بچت")} Rs. {(deal.originalPrice - deal.price).toLocaleString()}
+                  </span>
+                </div>
+                
+                <Button 
+                  variant="primary" 
+                  size="sm" 
+                  onClick={() => addToCart(deal, 1, deal.weightOptions[0])}
+                  className="w-full mt-2"
+                >
+                  <ApperIcon name="Plus" size={14} className="mr-1" />
+                  {t("Add to Cart", "کارٹ میں شامل کریں")}
+                </Button>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
 

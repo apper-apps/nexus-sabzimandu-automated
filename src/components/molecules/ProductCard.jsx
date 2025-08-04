@@ -128,11 +128,8 @@ return (
             {t("Organic", "آرگینک")}
           </Badge>
         )}
-        <div className="absolute top-2 right-2 bg-white/90 backdrop-blur-sm rounded-full px-2 py-1">
-          <div className="flex items-center space-x-1">
-            <div className="w-2 h-2 bg-success rounded-full"></div>
-            <span className="text-xs font-body text-gray-700">{freshnessText}</span>
-          </div>
+<div className="absolute top-2 right-2 bg-white/90 backdrop-blur-sm rounded-full p-2">
+          <div className="w-2 h-2 bg-success rounded-full"></div>
         </div>
       </div>
       

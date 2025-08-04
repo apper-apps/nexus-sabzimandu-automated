@@ -118,12 +118,19 @@ const addToCart = (product, quantity = 1, selectedWeight = "1kg", isSubscription
     dispatch({ type: "ADD_ITEM", payload: cartItem });
     
     const pointsEarned = Math.floor((product.price * quantity) / 10);
-    const subscriptionMessage = isSubscription ? " (Subscription price)" : "";
+    const subscriptionMessage = isSubscription ? " (Subscription)" : "";
+    const isDeal = product.Id && product.Id.toString().startsWith('deal-');
+    const dealMessage = isDeal ? " (Special Deal)" : "";
+    const savings = isDeal && product.originalPrice ? ` - Save Rs. ${(product.originalPrice - product.price).toLocaleString()}!` : "";
     
     if (pointsEarned > 0) {
-      toast.success(`${product.name} added to cart${subscriptionMessage}! Earn ${pointsEarned} points on purchase.`);
+      toast.success(`${product.name} added to cart${subscriptionMessage}${dealMessage}! Earn ${pointsEarned} points${savings}`, {
+        autoClose: 4000
+      });
     } else {
-      toast.success(`${product.name} added to cart${subscriptionMessage}!`);
+      toast.success(`${product.name} added to cart${subscriptionMessage}${dealMessage}!${savings}`, {
+        autoClose: 3000
+      });
     }
   };
 
