@@ -10,6 +10,34 @@ import Loading from "@/components/ui/Loading";
 import Error from "@/components/ui/Error";
 import { toast } from "react-toastify";
 
+// Utility functions - moved outside component scope for global access
+const formatDate = (dateStr) => {
+  const date = new Date(dateStr);
+  return date.toLocaleDateString('en-US', { 
+    month: 'short', 
+    day: 'numeric',
+    year: 'numeric'
+  });
+};
+
+const getFrequencyText = (frequency) => {
+  switch (frequency) {
+    case "weekly": return "Weekly";
+    case "bi-weekly": return "Bi-weekly";
+    case "monthly": return "Monthly";
+    default: return frequency;
+  }
+};
+
+const getStatusColor = (status) => {
+  switch (status) {
+    case "active": return "success";
+    case "paused": return "warning";
+    case "cancelled": return "error";
+    default: return "secondary";
+  }
+};
+
 export default function Subscriptions() {
   const [activeTab, setActiveTab] = useState("browse"); // browse, active, history
   const [availableProducts, setAvailableProducts] = useState([]);
@@ -137,32 +165,6 @@ export default function Subscriptions() {
     addToCart(product, 1, subscription.weight);
   };
 
-  const formatDate = (dateStr) => {
-    const date = new Date(dateStr);
-    return date.toLocaleDateString('en-US', { 
-      month: 'short', 
-      day: 'numeric',
-      year: 'numeric'
-    });
-  };
-
-  const getFrequencyText = (frequency) => {
-    switch (frequency) {
-      case "weekly": return "Weekly";
-      case "bi-weekly": return "Bi-weekly";
-      case "monthly": return "Monthly";
-      default: return frequency;
-    }
-  };
-
-  const getStatusColor = (status) => {
-    switch (status) {
-      case "active": return "success";
-      case "paused": return "warning";
-      case "cancelled": return "error";
-      default: return "secondary";
-    }
-  };
 
   if (loading) return <Loading />;
   if (error) return <Error message={error} onRetry={loadData} />;
