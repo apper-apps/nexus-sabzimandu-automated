@@ -54,33 +54,45 @@ const BottomNavigation = () => {
   };
 
 return (
-    <nav className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 z-50 shadow-lg">
-      <div className="flex justify-around items-center py-2 px-1">
-        {navItems.map((item) => (
-          <Button
-            key={item.key}
-            variant="ghost"
-            onClick={() => navigate(item.path)}
-            className={cn(
-              "flex flex-col items-center space-y-1 p-2 min-h-[60px] min-w-[60px] rounded-lg transition-all duration-200 touch-target",
-              isActive(item.path) 
-                ? "text-emerald-600 bg-emerald-50" 
-                : "text-gray-600 hover:text-emerald-600 hover:bg-emerald-50"
-            )}
-          >
-            <div className="relative">
-              <ApperIcon name={item.icon} size={20} />
-              {item.badge && item.badge > 0 && (
-                <span className="absolute -top-2 -right-2 w-4 h-4 bg-gradient-to-r from-orange-500 to-orange-600 rounded-full flex items-center justify-center text-xs text-white font-body font-bold shadow-sm">
-                  {item.badge > 9 ? "9+" : item.badge}
-                </span>
+    <nav className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 z-50 shadow-2xl backdrop-blur-sm">
+      <div className="safe-area-inset-bottom">
+        <div className="flex justify-around items-center py-2 px-2 max-w-md mx-auto">
+          {navItems.map((item) => (
+            <Button
+              key={item.key}
+              variant="ghost"
+              onClick={() => navigate(item.path)}
+              className={cn(
+                "flex flex-col items-center space-y-1 p-3 min-h-[68px] min-w-[68px] rounded-xl transition-all duration-300 touch-target transform hover:scale-105",
+                isActive(item.path) 
+                  ? "text-emerald-600 bg-gradient-to-t from-emerald-50 to-emerald-25 shadow-sm" 
+                  : "text-gray-600 hover:text-emerald-600 hover:bg-emerald-50"
               )}
-            </div>
-            <span className="text-xs font-body font-medium leading-none">
-              {item.label}
-            </span>
-          </Button>
-        ))}
+            >
+              <div className="relative">
+                <ApperIcon 
+                  name={item.icon} 
+                  size={isActive(item.path) ? 22 : 20} 
+                  className={cn(
+                    "transition-all duration-200",
+                    isActive(item.path) ? "drop-shadow-sm" : ""
+                  )}
+                />
+                {item.badge && item.badge > 0 && (
+                  <span className="absolute -top-2 -right-2 w-5 h-5 bg-gradient-to-r from-orange-500 to-orange-600 rounded-full flex items-center justify-center text-xs text-white font-body font-bold shadow-lg animate-pulse">
+                    {item.badge > 9 ? "9+" : item.badge}
+                  </span>
+                )}
+              </div>
+              <span className={cn(
+                "text-xs font-body font-medium leading-none",
+                isActive(item.path) ? "font-semibold" : ""
+              )}>
+                {item.label}
+              </span>
+            </Button>
+          ))}
+        </div>
       </div>
     </nav>
   );

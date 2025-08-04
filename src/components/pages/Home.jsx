@@ -166,8 +166,8 @@ const loadData = async () => {
                 </p>
                 
                 <div className="flex items-center gap-4 mb-4">
-                  <span className="text-2xl font-bold text-primary">
-Rs. {selectedRecipe.totalPrice}
+<span className="text-2xl font-bold text-primary font-display">
+                    Rs. {selectedRecipe.totalPrice.toLocaleString('en-PK')}
                   </span>
                   <Badge variant="success" className="text-sm">
                     Save Rs. {selectedRecipe.savings}
@@ -204,26 +204,27 @@ Rs. {selectedRecipe.totalPrice}
         </div>
       )}
 
-      {/* Hero Banner */}
+{/* Hero Banner */}
       <div className="relative overflow-hidden">
-<div className="bg-gradient-to-br from-emerald-500 via-emerald-600 to-emerald-700 p-6 text-white relative overflow-hidden">
+<div className="bg-gradient-to-br from-emerald-500 via-emerald-600 to-emerald-700 p-6 sm:p-8 text-white relative overflow-hidden min-h-[200px] flex items-center">
           <div className="absolute inset-0 bg-gradient-to-r from-transparent to-orange-500/20"></div>
-          <div className="relative z-10">
-            <h1 className="text-2xl font-display font-bold mb-2">
+          <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2260%22%20height%3D%2260%22%20viewBox%3D%220%200%2060%2060%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cg%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%3Cg%20fill%3D%22%23ffffff%22%20fill-opacity%3D%220.05%22%3E%3Ccircle%20cx%3D%2230%22%20cy%3D%2230%22%20r%3D%222%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-30"></div>
+          <div className="relative z-10 w-full">
+            <h1 className="text-2xl sm:text-3xl font-display font-bold mb-3 leading-tight">
               {t("Fresh from Farm to Your Door", "کھیت سے آپ کے دروازے تک تازہ")}
             </h1>
-            <p className="text-emerald-50 font-body mb-4">
-              {t("Quality produce delivered daily", "معیاری اجناس روزانہ فراہم")}
+            <p className="text-emerald-50 font-body mb-6 text-base sm:text-lg max-w-md">
+              {t("Quality produce delivered daily across Pakistan", "پاکستان بھر میں معیاری اجناس روزانہ فراہم")}
             </p>
             <Button 
               variant="secondary" 
               onClick={() => navigate("/categories")}
-              className="px-6 bg-orange-500 hover:bg-orange-600 text-white border-none shadow-lg"
+              className="px-8 py-3 bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white border-none shadow-lg font-body font-semibold rounded-full transform hover:scale-105 transition-all duration-200 touch-target"
             >
+              <ApperIcon name="ShoppingBag" size={16} className="mr-2" />
               {t("Shop Now", "خریداری کریں")}
             </Button>
           </div>
-          <div className="absolute inset-0 bg-gradient-to-r from-transparent to-white/10"></div>
         </div>
       </div>
 
@@ -330,56 +331,59 @@ Rs. {selectedRecipe.totalPrice}
       )}
 
       {/* WhatsApp Catalog Banner */}
-      <div className="px-4">
-        <div className="bg-gradient-to-r from-green-500/10 to-green-600/10 rounded-xl p-4 border border-green-200">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-3">
-              <div className="w-12 h-12 bg-green-500 rounded-xl flex items-center justify-center">
-                <ApperIcon name="MessageCircle" size={24} className="text-white" />
+<div className="px-4">
+        <div className="bg-gradient-to-r from-green-500/10 to-green-600/10 rounded-xl p-5 border border-green-200 shadow-sm">
+          <div className="flex items-center justify-between flex-wrap gap-4">
+            <div className="flex items-center gap-4">
+              <div className="w-14 h-14 bg-gradient-to-br from-green-500 to-green-600 rounded-xl flex items-center justify-center shadow-lg">
+                <ApperIcon name="MessageCircle" size={26} className="text-white" />
               </div>
               <div>
-                <h3 className="font-display font-bold text-gray-900">
+                <h3 className="font-display font-bold text-gray-900 text-lg">
                   {t("Order via WhatsApp", "واٹس ایپ کے ذریعے آرڈر کریں")}
                 </h3>
-                <p className="text-sm text-gray-600 font-body">
-                  {t("Browse our complete catalog", "ہماری مکمل کیٹالاگ دیکھیں")}
+                <p className="text-sm text-gray-600 font-body mt-1">
+                  {t("Browse our complete catalog in Pakistani Rupees", "پاکستانی روپے میں ہماری مکمل کیٹالاگ دیکھیں")}
                 </p>
               </div>
             </div>
             <Button
               variant="outline"
-              size="sm"
-onClick={() => {
+              onClick={() => {
                 import('@/services/api/whatsappService').then(({ whatsappService }) => {
                   whatsappService.openCatalogInWhatsApp(products);
                 });
               }}
-              className="border-green-500 text-green-600 hover:bg-green-500 hover:text-white"
+              className="border-green-500 text-green-600 hover:bg-green-500 hover:text-white px-6 py-3 font-body font-semibold rounded-lg transform hover:scale-105 transition-all duration-200 touch-target"
             >
-              <ApperIcon name="ExternalLink" size={14} className="mr-1" />
+              <ApperIcon name="ExternalLink" size={16} className="mr-2" />
               {t("Open Catalog", "کیٹالاگ کھولیں")}
             </Button>
           </div>
         </div>
       </div>
+          </div>
+        </div>
+      </div>
 
-      {/* Quick Categories */}
+{/* Quick Categories */}
       <div className="px-4">
-        <div className="flex items-center justify-between mb-4">
-          <h2 className="text-xl font-display font-bold text-gray-900">
+        <div className="flex items-center justify-between mb-6">
+          <h2 className="text-xl sm:text-2xl font-display font-bold text-gray-900">
             {t("Shop by Category", "قسم کے مطابق خریداری")}
           </h2>
           <Button 
             variant="link" 
             onClick={() => navigate("/categories")}
-            className="text-sm"
+            className="text-sm font-body font-medium text-emerald-600 hover:text-emerald-700 touch-target"
           >
             {t("View All", "سب دیکھیں")}
+            <ApperIcon name="ArrowRight" size={14} className="ml-1" />
           </Button>
         </div>
         
-        <div className="grid grid-cols-3 gap-3">
-          {categories.map((category) => (
+        <div className="grid grid-cols-3 gap-3 sm:gap-4">
+          {categories.slice(0, 6).map((category) => (
             <CategoryCard key={category.Id} category={category} />
           ))}
         </div>
