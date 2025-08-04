@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useReducer, useEffect } from "react";
 import { toast } from "react-toastify";
 import { recipeBundleService } from "@/services/api/recipeBundleService";
+import { loyaltyService } from "@/services/api/loyaltyService";
 const CartContext = createContext();
 
 const cartReducer = (state, action) => {
@@ -113,7 +114,13 @@ const addToCart = (product, quantity = 1, selectedWeight = "1kg") => {
     };
 
     dispatch({ type: "ADD_ITEM", payload: cartItem });
-    toast.success(`${product.name} added to cart!`);
+    
+    const pointsEarned = Math.floor((product.price * quantity) / 10);
+    if (pointsEarned > 0) {
+      toast.success(`${product.name} added to cart! Earn ${pointsEarned} points on purchase.`);
+    } else {
+      toast.success(`${product.name} added to cart!`);
+    }
   };
 
   const addBundleToCart = async (recipeKey) => {

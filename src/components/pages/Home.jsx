@@ -180,6 +180,35 @@ const loadData = async () => {
         </div>
       </div>
 
+{/* Loyalty Points Banner */}
+      <div className="px-4">
+        <div className="bg-gradient-to-r from-secondary/10 to-warning/10 rounded-xl p-4 border border-secondary/20">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div className="w-12 h-12 gradient-secondary rounded-xl flex items-center justify-center">
+                <ApperIcon name="Award" size={24} className="text-white" />
+              </div>
+              <div>
+                <h3 className="font-display font-bold text-gray-900">
+                  {t("Sabzi Points", "سبزی پوائنٹس")}
+                </h3>
+                <p className="text-sm text-gray-600 font-body">
+                  {t("Earn points with every purchase", "ہر خریداری کے ساتھ پوائنٹس حاصل کریں")}
+                </p>
+              </div>
+            </div>
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => navigate("/loyalty-points")}
+              className="border-secondary text-secondary hover:bg-secondary hover:text-white"
+            >
+              {t("View Points", "پوائنٹس دیکھیں")}
+            </Button>
+          </div>
+        </div>
+      </div>
+
 {/* Recipe Bundles */}
       {recipeBundles.length > 0 && (
         <section>

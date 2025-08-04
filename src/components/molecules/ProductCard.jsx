@@ -157,8 +157,15 @@ return (
               <span className="text-xs text-gray-600">{product?.rating || "N/A"}</span>
             </div>
           </div>
+          
+          {/* Loyalty Points Badge */}
+          <div className="flex items-center justify-between mb-2">
+            <Badge variant="secondary" size="sm" className="text-xs">
+              <ApperIcon name="Award" size={10} className="mr-1" />
+              {Math.floor((product?.price || 0) / 10)} {t("Points", "پوائنٹس")}
+            </Badge>
+          </div>
         </div>
-        
 <Button 
           variant="primary" 
           size="sm" 

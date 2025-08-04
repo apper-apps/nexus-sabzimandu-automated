@@ -73,10 +73,20 @@ const Cart = () => {
             {t("Order Summary", "آرڈر کا خلاصہ")}
           </h3>
           
-          <div className="space-y-2 text-sm font-body">
+<div className="space-y-2 text-sm font-body">
             <div className="flex justify-between">
               <span className="text-gray-600">{t("Subtotal", "ذیلی کل")} ({totalItems} {t("items", "اشیاء")})</span>
               <span className="text-gray-900">Rs. {totalPrice.toLocaleString()}</span>
+            </div>
+            
+            <div className="flex justify-between">
+              <span className="text-gray-600 flex items-center">
+                <ApperIcon name="Award" size={14} className="mr-1 text-secondary" />
+                {t("Points You'll Earn", "آپ کو ملنے والے پوائنٹس")}
+              </span>
+              <span className="text-secondary font-medium">
+                {Math.floor(finalTotal / 10)} {t("Points", "پوائنٹس")}
+              </span>
             </div>
             
             <div className="flex justify-between">

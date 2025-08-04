@@ -155,14 +155,26 @@ const ProductDetail = () => {
           </span>
         </div>
 
-        {/* Price */}
-        <div className="flex items-baseline space-x-2">
-          <span className="text-3xl font-display font-bold text-primary">
-            Rs. {product.price.toLocaleString()}
-          </span>
-          <span className="text-gray-500 font-body">/{product.unit}</span>
+{/* Price */}
+        <div className="space-y-2">
+          <div className="flex items-baseline space-x-2">
+            <span className="text-3xl font-display font-bold text-primary">
+              Rs. {product.price.toLocaleString()}
+            </span>
+            <span className="text-gray-500 font-body">/{product.unit}</span>
+          </div>
+          
+          {/* Points Earning Info */}
+          <div className="flex items-center space-x-2">
+            <Badge variant="secondary" className="text-sm">
+              <ApperIcon name="Award" size={14} className="mr-1" />
+              {t("Earn", "حاصل کریں")} {Math.floor(product.price * quantity / 10)} {t("Sabzi Points", "سبزی پوائنٹس")}
+            </Badge>
+            <span className="text-xs text-gray-500">
+              {t("1 point per Rs. 10", "10 روپے پر 1 پوائنٹ")}
+            </span>
+          </div>
         </div>
-
         {/* Weight Selection */}
         <div>
           <h3 className="font-display font-semibold text-gray-900 mb-2">

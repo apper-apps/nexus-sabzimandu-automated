@@ -10,9 +10,9 @@ import Checkout from "@/components/pages/Checkout";
 import Orders from "@/components/pages/Orders";
 import Account from "@/components/pages/Account";
 import OrderConfirmation from "@/components/pages/OrderConfirmation";
+import LoyaltyPoints from "@/components/pages/LoyaltyPoints";
 import { CartProvider } from "@/hooks/useCart";
 import { LanguageProvider } from "@/hooks/useLanguage";
-
 function App() {
   const [isLoading, setIsLoading] = useState(true);
 
@@ -55,8 +55,9 @@ function App() {
                 <Route path="/product/:id" element={<ProductDetail />} />
                 <Route path="/cart" element={<Cart />} />
                 <Route path="/checkout" element={<Checkout />} />
-                <Route path="/orders" element={<Orders />} />
+<Route path="/orders" element={<Orders />} />
                 <Route path="/account" element={<Account />} />
+                <Route path="/loyalty-points" element={<LoyaltyPoints />} />
                 <Route path="/order-confirmation/:orderId" element={<OrderConfirmation />} />
               </Routes>
             </Layout>

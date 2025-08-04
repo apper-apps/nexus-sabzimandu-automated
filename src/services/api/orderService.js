@@ -1,7 +1,7 @@
 import ordersData from "@/services/mockData/orders.json";
+import { loyaltyService } from "./loyaltyService";
 
 const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
-
 export const orderService = {
   async getAll() {
     await delay(400);
@@ -30,9 +30,20 @@ export const orderService = {
       Id: maxId + 1,
       userId: "user123", // Mock user ID
       createdAt: new Date().toISOString(),
-      updatedAt: new Date().toISOString()
+updatedAt: new Date().toISOString()
     };
     ordersData.push(newOrder);
+    
+    // Award loyalty points automatically (1 point per Rs. 10)
+    const pointsEarned = Math.floor(newOrder.totalAmount / 10);
+    if (pointsEarned > 0) {
+      try {
+        await loyaltyService.addPoints(pointsEarned, 'purchase', `Order #${newOrder.Id}`);
+      } catch (error) {
+        console.warn('Failed to award loyalty points:', error);
+      }
+    }
+    
     return { ...newOrder };
   },
 

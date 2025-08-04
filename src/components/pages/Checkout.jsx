@@ -7,8 +7,8 @@ import ApperIcon from "@/components/ApperIcon";
 import { useCart } from "@/hooks/useCart";
 import { useLanguage } from "@/hooks/useLanguage";
 import { orderService } from "@/services/api/orderService";
+import { loyaltyService } from "@/services/api/loyaltyService";
 import { toast } from "react-toastify";
-
 const Checkout = () => {
   const navigate = useNavigate();
   const { items, getTotalPrice, clearCart } = useCart();
@@ -111,8 +111,20 @@ const Checkout = () => {
       };
 
       const newOrder = await orderService.create(orderData);
-      clearCart();
-      toast.success(t("Order placed successfully!", "آرڈر کامیابی سے دیا گیا!"));
+clearCart();
+      
+      // Award loyalty points for the order
+      const pointsEarned = Math.floor(finalTotal / 10);
+      if (pointsEarned > 0) {
+        try {
+          await loyaltyService.addPoints(pointsEarned, 'purchase', `Order #${newOrder.Id}`);
+          toast.success(t(`Order placed successfully! You earned ${pointsEarned} Sabzi Points!`, `آرڈر کامیابی سے دیا گیا! آپ نے ${pointsEarned} سبزی پوائنٹس حاصل کیے!`));
+        } catch (error) {
+          toast.success(t("Order placed successfully!", "آرڈر کامیابی سے دیا گیا!"));
+        }
+      } else {
+        toast.success(t("Order placed successfully!", "آرڈر کامیابی سے دیا گیا!"));
+      }
       
       navigate(`/order-confirmation/${newOrder.Id}`);
     } catch (error) {
