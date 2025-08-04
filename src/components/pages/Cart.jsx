@@ -41,10 +41,10 @@ const Cart = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
-      <div className="bg-white px-4 py-4 border-b border-gray-200">
+<div className="bg-white px-4 py-4 border-b border-gray-200">
         <div className="flex items-center justify-between">
           <h1 className="text-xl font-display font-bold text-gray-900">
-            {t("Shopping Cart", "شاپنگ کارٹ")} ({totalItems})
+            {t("Shopping Cart", "شاپنگ کارٹ")} ({totalItems} {totalItems === 1 ? t("item", "آٹم") : t("items", "اشیاء")})
           </h1>
           {items.length > 0 && (
             <Button 
@@ -76,42 +76,45 @@ const Cart = () => {
           
 <div className="space-y-2 text-sm font-body">
             <div className="flex justify-between">
-              <span className="text-gray-600">{t("Subtotal", "ذیلی کل")} ({totalItems} {t("items", "اشیاء")})</span>
-              <span className="text-gray-900">Rs. {totalPrice.toLocaleString()}</span>
+              <span className="text-gray-600">{t("Subtotal", "ذیلی کل")} ({totalItems} {totalItems === 1 ? t("item", "آٹم") : t("items", "اشیاء")})</span>
+              <span className="text-gray-900 font-medium">Rs. {totalPrice.toLocaleString()}</span>
             </div>
             
             <div className="flex justify-between">
               <span className="text-gray-600 flex items-center">
                 <ApperIcon name="Award" size={14} className="mr-1 text-orange-500" />
-                {t("Points You'll Earn", "آپ کو ملنے والے پوائنٹس")}
+                {t("Sabzi Points Earned", "سبزی پوائنٹس حاصل")}
               </span>
-              <span className="text-orange-500 font-medium">
-                {Math.floor(finalTotal / 10)} {t("Points", "پوائنٹس")}
+              <span className="text-orange-500 font-semibold">
+                +{Math.floor(totalPrice / 10)} {t("Points", "پوائنٹس")}
               </span>
             </div>
             
-            <div className="flex justify-between">
+<div className="flex justify-between">
               <span className="text-gray-600">
                 {t("Delivery Fee", "ڈیلیوری فیس")}
-                {totalPrice > 1500 && (
-                  <span className="text-xs text-emerald-600 ml-1">({t("Free", "مفت")})</span>
-                )}
               </span>
-              <span className={deliveryFee === 0 ? "text-emerald-600 line-through" : "text-gray-900"}>
-                Rs. {deliveryFee.toLocaleString()}
+              <span className={deliveryFee === 0 ? "text-emerald-600 font-semibold" : "text-gray-900 font-medium"}>
+                {deliveryFee === 0 ? t("Free", "مفت") : `Rs. ${deliveryFee.toLocaleString()}`}
               </span>
             </div>
             
-            {totalPrice <= 1500 && (
-              <div className="text-xs text-blue-600 p-2 bg-blue-50 rounded">
-                {t("Free delivery on orders over Rs. 1,500", "1,500 روپے سے زیادہ کے آرڈر پر مفت ڈیلیوری")}
+            {totalPrice > 1500 ? (
+              <div className="text-xs text-emerald-600 p-2 bg-emerald-50 rounded flex items-center">
+                <ApperIcon name="CheckCircle" size={14} className="mr-1" />
+                {t("🎉 You qualify for free delivery!", "🎉 آپ مفت ڈیلیوری کے مستحق ہیں!")}
+              </div>
+            ) : (
+              <div className="text-xs text-amber-600 p-2 bg-amber-50 rounded flex items-center">
+                <ApperIcon name="Truck" size={14} className="mr-1" />
+                {t(`Add Rs. ${(1500 - totalPrice).toLocaleString()} more for free delivery`, `مفت ڈیلیوری کے لیے ${(1500 - totalPrice).toLocaleString()} روپے اور شامل کریں`)}
               </div>
             )}
             
             <hr className="my-2" />
             
-            <div className="flex justify-between text-lg font-display font-bold">
-              <span className="text-gray-900">{t("Total", "کل")}</span>
+<div className="flex justify-between text-lg font-display font-bold border-t pt-2 mt-2">
+              <span className="text-gray-900">{t("Total Amount", "کل رقم")}</span>
               <span className="text-emerald-600">Rs. {finalTotal.toLocaleString()}</span>
             </div>
           </div>
@@ -122,23 +125,23 @@ const Cart = () => {
       <div className="fixed bottom-20 left-0 right-0 p-4 bg-white border-t border-gray-200">
         <div className="space-y-3">
           {/* WhatsApp Order Button */}
-          <Button 
+<Button 
             variant="primary" 
-onClick={() => {
-              whatsappService.openCartOrderInWhatsApp(items, totalPrice, {});
+            onClick={() => {
+              whatsappService.openCartOrderInWhatsApp(items, finalTotal, {});
             }}
-            className="w-full bg-green-500 hover:bg-green-600 text-white"
+            className="w-full bg-green-500 hover:bg-green-600 text-white shadow-lg transform transition-all hover:scale-[1.02]"
             size="lg"
           >
             <ApperIcon name="MessageCircle" size={20} className="mr-2" />
-            {t("Order via WhatsApp", "واٹس ایپ سے آرڈر کریں")}
+            {t("🚀 Order via WhatsApp", "🚀 واٹس ایپ سے آرڈر کریں")}
           </Button>
           
           {/* Traditional Checkout Button */}
-          <Button 
+<Button 
             variant="outline" 
             onClick={() => navigate("/checkout")}
-            className="w-full"
+            className="w-full border-2 border-primary text-primary hover:bg-primary hover:text-white transform transition-all hover:scale-[1.02]"
             size="lg"
           >
             <ApperIcon name="CreditCard" size={20} className="mr-2" />
