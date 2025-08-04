@@ -32,11 +32,11 @@ return (
               onClick={() => navigate("/")}
               className="flex items-center space-x-2"
             >
-              <div className="w-8 h-8 gradient-primary rounded-lg flex items-center justify-center">
+              <div className="w-8 h-8 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-lg flex items-center justify-center shadow-md">
                 <span className="text-white font-display font-bold text-sm">S</span>
               </div>
               <div>
-                <h1 className="font-display font-bold text-lg gradient-text">SabziMandu</h1>
+                <h1 className="font-display font-bold text-lg bg-gradient-to-r from-emerald-600 to-orange-500 bg-clip-text text-transparent">SabziMandu</h1>
               </div>
             </button>
           </div>
@@ -46,9 +46,9 @@ return (
               variant="ghost"
               size="icon"
               onClick={toggleLanguage}
-              className="w-10 h-10"
+              className="w-10 h-10 hover:bg-emerald-50"
             >
-              <span className="text-sm font-body font-medium">
+              <span className="text-sm font-body font-medium text-emerald-600">
                 {language === "en" ? "اردو" : "EN"}
               </span>
             </Button>
@@ -57,11 +57,11 @@ return (
               variant="ghost"
               size="icon"
               onClick={() => navigate("/cart")}
-              className="relative w-10 h-10"
+              className="relative w-10 h-10 hover:bg-orange-50"
             >
-              <ApperIcon name="ShoppingCart" size={20} />
+              <ApperIcon name="ShoppingCart" size={20} className="text-orange-600" />
               {totalItems > 0 && (
-                <span className="absolute -top-1 -right-1 w-5 h-5 gradient-accent rounded-full flex items-center justify-center text-xs text-white font-body font-bold">
+                <span className="absolute -top-1 -right-1 w-5 h-5 bg-gradient-to-r from-orange-500 to-orange-600 rounded-full flex items-center justify-center text-xs text-white font-body font-bold shadow-md">
                   {totalItems > 9 ? "9+" : totalItems}
                 </span>
               )}

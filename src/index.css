@@ -11,7 +11,7 @@ body {
 }
 
 .font-display {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Poppins', 'Montserrat', sans-serif;
 }
 
 .font-body {
@@ -83,22 +83,22 @@ body {
 
 /* Custom utilities */
 .gradient-text {
-  background: linear-gradient(135deg, #2E7D32 0%, #43A047 100%);
+  background: linear-gradient(135deg, #10B981 0%, #27AE60 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .gradient-primary {
-  background: linear-gradient(135deg, #2E7D32 0%, #43A047 100%);
+  background: linear-gradient(135deg, #10B981 0%, #27AE60 100%);
 }
 
 .gradient-secondary {
-  background: linear-gradient(135deg, #F57C00 0%, #FB8C00 100%);
+  background: linear-gradient(135deg, #E67E22 0%, #F39C12 100%);
 }
 
 .gradient-accent {
-  background: linear-gradient(135deg, #D32F2F 0%, #E53935 100%);
+  background: linear-gradient(135deg, #E74C3C 0%, #C0392B 100%);
 }
 
 .card-hover {

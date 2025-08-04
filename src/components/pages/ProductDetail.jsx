@@ -134,9 +134,9 @@ const [product, setProduct] = useState(null);
           </h1>
 <button 
             onClick={() => setShowFarmStoryModal(true)}
-            className="text-gray-600 font-body flex items-center hover:text-primary transition-colors group"
+            className="text-gray-600 font-body flex items-center hover:text-emerald-600 transition-colors group"
           >
-            <ApperIcon name="Store" size={16} className="mr-2 group-hover:text-primary" />
+            <ApperIcon name="Store" size={16} className="mr-2 group-hover:text-emerald-600" />
             <span className="underline">{product.vendorName}</span>
             <ApperIcon name="ExternalLink" size={14} className="ml-1 opacity-0 group-hover:opacity-100 transition-opacity" />
           </button>
@@ -163,7 +163,7 @@ const [product, setProduct] = useState(null);
 {/* Price */}
         <div className="space-y-2">
           <div className="flex items-baseline space-x-2">
-            <span className="text-3xl font-display font-bold text-primary">
+            <span className="text-3xl font-display font-bold text-emerald-600">
               Rs. {product.price.toLocaleString()}
             </span>
             <span className="text-gray-500 font-body">/{product.unit}</span>
@@ -171,7 +171,7 @@ const [product, setProduct] = useState(null);
           
           {/* Points Earning Info */}
           <div className="flex items-center space-x-2">
-            <Badge variant="secondary" className="text-sm">
+            <Badge variant="secondary" className="text-sm bg-orange-100 text-orange-700">
               <ApperIcon name="Award" size={14} className="mr-1" />
               {t("Earn", "حاصل کریں")} {Math.floor(product.price * quantity / 10)} {t("Sabzi Points", "سبزی پوائنٹس")}
             </Badge>
@@ -293,7 +293,7 @@ const [product, setProduct] = useState(null);
 onClick={() => {
               whatsappService.openProductInWhatsApp(product, selectedWeight, quantity);
             }}
-            className="flex-1 bg-green-500 hover:bg-green-600 text-white"
+            className="flex-1 bg-green-500 hover:bg-green-600 text-white border-none shadow-md"
           >
             <ApperIcon name="MessageCircle" size={16} className="mr-2" />
             {t("Order via WhatsApp", "واٹس ایپ سے آرڈر")}

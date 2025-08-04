@@ -6,17 +6,28 @@ export default {
   ],
   theme: {
     extend: {
-      colors: {
-        primary: '#2E7D32',
-        secondary: '#F57C00',
-        accent: '#D32F2F',
-        success: '#43A047',
-        warning: '#FB8C00',
-        error: '#E53935',
-        info: '#1976D2',
+colors: {
+        primary: '#27AE60',
+        secondary: '#E67E22',
+        accent: '#E74C3C',
+        success: '#27AE60',
+        warning: '#F39C12',
+        error: '#E74C3C',
+        info: '#3498DB',
+        emerald: {
+          50: '#ECFDF5',
+          500: '#10B981',
+          600: '#059669',
+          700: '#047857',
+        },
+        orange: {
+          50: '#FFF7ED',
+          500: '#F97316',
+          600: '#EA580C',
+        },
       },
-      fontFamily: {
-        display: ['Poppins', 'sans-serif'],
+fontFamily: {
+        display: ['Poppins', 'Montserrat', 'sans-serif'],
         body: ['Inter', 'sans-serif'],
       },
       borderRadius: {

@@ -82,10 +82,10 @@ const Cart = () => {
             
             <div className="flex justify-between">
               <span className="text-gray-600 flex items-center">
-                <ApperIcon name="Award" size={14} className="mr-1 text-secondary" />
+                <ApperIcon name="Award" size={14} className="mr-1 text-orange-500" />
                 {t("Points You'll Earn", "آپ کو ملنے والے پوائنٹس")}
               </span>
-              <span className="text-secondary font-medium">
+              <span className="text-orange-500 font-medium">
                 {Math.floor(finalTotal / 10)} {t("Points", "پوائنٹس")}
               </span>
             </div>
@@ -94,16 +94,16 @@ const Cart = () => {
               <span className="text-gray-600">
                 {t("Delivery Fee", "ڈیلیوری فیس")}
                 {totalPrice > 1500 && (
-                  <span className="text-xs text-success ml-1">({t("Free", "مفت")})</span>
+                  <span className="text-xs text-emerald-600 ml-1">({t("Free", "مفت")})</span>
                 )}
               </span>
-              <span className={deliveryFee === 0 ? "text-success line-through" : "text-gray-900"}>
+              <span className={deliveryFee === 0 ? "text-emerald-600 line-through" : "text-gray-900"}>
                 Rs. {deliveryFee.toLocaleString()}
               </span>
             </div>
             
             {totalPrice <= 1500 && (
-              <div className="text-xs text-info p-2 bg-info/10 rounded">
+              <div className="text-xs text-blue-600 p-2 bg-blue-50 rounded">
                 {t("Free delivery on orders over Rs. 1,500", "1,500 روپے سے زیادہ کے آرڈر پر مفت ڈیلیوری")}
               </div>
             )}
@@ -112,7 +112,7 @@ const Cart = () => {
             
             <div className="flex justify-between text-lg font-display font-bold">
               <span className="text-gray-900">{t("Total", "کل")}</span>
-              <span className="text-primary">Rs. {finalTotal.toLocaleString()}</span>
+              <span className="text-emerald-600">Rs. {finalTotal.toLocaleString()}</span>
             </div>
           </div>
         </div>

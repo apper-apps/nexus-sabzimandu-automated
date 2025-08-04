@@ -122,11 +122,11 @@ const SearchBar = ({ onSearch, onRecipeSelect, placeholder }) => {
                         {recipe.description}
                       </p>
                       <div className="flex items-center gap-4 mt-2">
-                        <span className="text-sm font-medium text-primary">
-                          ₹{recipe.totalPrice}
+<span className="text-sm font-medium text-emerald-600">
+                          Rs. {recipe.totalPrice}
                         </span>
                         <span className="text-xs text-green-600 bg-green-50 px-2 py-1 rounded-full">
-                          Save ₹{recipe.savings}
+                          Save Rs. {recipe.savings}
                         </span>
                       </div>
                     </div>

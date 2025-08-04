@@ -121,10 +121,10 @@ const loadData = async () => {
                 
                 <div className="flex items-center gap-4 mb-4">
                   <span className="text-2xl font-bold text-primary">
-                    ₹{selectedRecipe.totalPrice}
+Rs. {selectedRecipe.totalPrice}
                   </span>
                   <Badge variant="success" className="text-sm">
-                    Save ₹{selectedRecipe.savings}
+                    Save Rs. {selectedRecipe.savings}
                   </Badge>
                 </div>
                 
@@ -160,18 +160,19 @@ const loadData = async () => {
 
       {/* Hero Banner */}
       <div className="relative overflow-hidden">
-        <div className="bg-gradient-to-br from-primary via-primary to-success p-6 text-white">
+<div className="bg-gradient-to-br from-emerald-500 via-emerald-600 to-emerald-700 p-6 text-white relative overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent to-orange-500/20"></div>
           <div className="relative z-10">
             <h1 className="text-2xl font-display font-bold mb-2">
               {t("Fresh from Farm to Your Door", "کھیت سے آپ کے دروازے تک تازہ")}
             </h1>
-            <p className="text-primary-50 font-body mb-4">
+            <p className="text-emerald-50 font-body mb-4">
               {t("Quality produce delivered daily", "معیاری اجناس روزانہ فراہم")}
             </p>
             <Button 
               variant="secondary" 
               onClick={() => navigate("/categories")}
-              className="px-6"
+              className="px-6 bg-orange-500 hover:bg-orange-600 text-white border-none shadow-lg"
             >
               {t("Shop Now", "خریداری کریں")}
             </Button>
@@ -247,10 +248,10 @@ const loadData = async () => {
                     </p>
                     <div className="flex items-center justify-between">
                       <span className="text-lg font-bold text-primary">
-                        ₹{bundle.totalPrice}
+Rs. {bundle.totalPrice}
                       </span>
                       <Badge variant="success" className="text-xs">
-                        Save ₹{bundle.savings}
+                        Save Rs. {bundle.savings}
                       </Badge>
                     </div>
                   </div>

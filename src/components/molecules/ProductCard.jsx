@@ -147,7 +147,7 @@ return (
           
           <div className="flex items-center justify-between mb-2">
             <div className="flex items-center space-x-1">
-              <span className="text-lg font-display font-bold text-primary">
+<span className="text-lg font-display font-bold text-emerald-600">
                 Rs. {(product?.price || 0).toLocaleString()}
               </span>
               <span className="text-xs text-gray-500">/{product?.unit || "unit"}</span>

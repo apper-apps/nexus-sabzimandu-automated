@@ -53,8 +53,8 @@ const BottomNavigation = () => {
     return false;
   };
 
-  return (
-    <nav className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 z-50">
+return (
+    <nav className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 z-50 shadow-lg">
       <div className="flex justify-around items-center py-2 px-1">
         {navItems.map((item) => (
           <Button
@@ -62,16 +62,16 @@ const BottomNavigation = () => {
             variant="ghost"
             onClick={() => navigate(item.path)}
             className={cn(
-              "flex flex-col items-center space-y-1 p-2 min-h-[60px] min-w-[60px] rounded-lg transition-all duration-200",
+              "flex flex-col items-center space-y-1 p-2 min-h-[60px] min-w-[60px] rounded-lg transition-all duration-200 touch-target",
               isActive(item.path) 
-                ? "text-primary bg-primary/5" 
-                : "text-gray-600 hover:text-gray-900 hover:bg-gray-50"
+                ? "text-emerald-600 bg-emerald-50" 
+                : "text-gray-600 hover:text-emerald-600 hover:bg-emerald-50"
             )}
           >
             <div className="relative">
               <ApperIcon name={item.icon} size={20} />
               {item.badge && item.badge > 0 && (
-                <span className="absolute -top-2 -right-2 w-4 h-4 gradient-accent rounded-full flex items-center justify-center text-xs text-white font-body font-bold">
+                <span className="absolute -top-2 -right-2 w-4 h-4 bg-gradient-to-r from-orange-500 to-orange-600 rounded-full flex items-center justify-center text-xs text-white font-body font-bold shadow-sm">
                   {item.badge > 9 ? "9+" : item.badge}
                 </span>
               )}

@@ -28,17 +28,17 @@ function App() {
   }, []);
 
   if (isLoading) {
-    return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+return (
+      <div className="min-h-screen bg-gradient-to-br from-emerald-50 to-orange-50 flex items-center justify-center">
         <div className="text-center">
           <div className="w-16 h-16 mx-auto mb-4 relative">
-            <div className="absolute inset-0 gradient-primary rounded-full animate-ping opacity-20"></div>
-            <div className="relative w-full h-full gradient-primary rounded-full flex items-center justify-center">
+            <div className="absolute inset-0 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-full animate-ping opacity-20"></div>
+            <div className="relative w-full h-full bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-full flex items-center justify-center shadow-lg">
               <span className="text-white font-display font-bold text-xl">S</span>
             </div>
           </div>
-          <h1 className="text-2xl font-display font-bold gradient-text mb-2">SabziMandu</h1>
-          <p className="text-gray-600 font-body">Loading fresh produce...</p>
+          <h1 className="text-2xl font-display font-bold bg-gradient-to-r from-emerald-600 to-orange-500 bg-clip-text text-transparent mb-2">SabziMandu</h1>
+          <p className="text-gray-600 font-body">Fresh from farm to your door...</p>
         </div>
       </div>
     );
