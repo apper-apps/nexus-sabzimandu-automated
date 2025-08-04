@@ -101,7 +101,7 @@ export const CartProvider = ({ children }) => {
     localStorage.setItem("sabziMandu_cart", JSON.stringify(state.items));
   }, [state.items]);
 
-const addToCart = (product, quantity = 1, selectedWeight = "1kg") => {
+const addToCart = (product, quantity = 1, selectedWeight = "1kg", isSubscription = false) => {
     const cartItem = {
       productId: product.Id,
       productName: product.name,
@@ -111,17 +111,34 @@ const addToCart = (product, quantity = 1, selectedWeight = "1kg") => {
       price: product.price,
       image: product.images[0],
       unit: product.unit,
-      vendorName: product.vendorName
+      vendorName: product.vendorName,
+      isSubscription
     };
 
     dispatch({ type: "ADD_ITEM", payload: cartItem });
     
     const pointsEarned = Math.floor((product.price * quantity) / 10);
+    const subscriptionMessage = isSubscription ? " (Subscription price)" : "";
+    
     if (pointsEarned > 0) {
-      toast.success(`${product.name} added to cart! Earn ${pointsEarned} points on purchase.`);
+      toast.success(`${product.name} added to cart${subscriptionMessage}! Earn ${pointsEarned} points on purchase.`);
     } else {
-      toast.success(`${product.name} added to cart!`);
+      toast.success(`${product.name} added to cart${subscriptionMessage}!`);
     }
+  };
+
+  const addSubscriptionToCart = (subscription) => {
+    const product = {
+      Id: subscription.productId,
+      name: subscription.productName,
+      nameUrdu: subscription.productNameUrdu,
+      price: subscription.subscriptionPrice,
+      images: [subscription.image],
+      unit: subscription.unit,
+      vendorName: "SabziMandu"
+    };
+    
+    addToCart(product, subscription.quantity, subscription.weight, true);
   };
 
   const addBundleToCart = async (recipeKey) => {
@@ -194,6 +211,7 @@ const generateWhatsAppMessage = (customerInfo = {}) => {
       items: state.items,
       addToCart,
       addBundleToCart,
+      addSubscriptionToCart,
       updateQuantity,
       removeFromCart,
       clearCart,

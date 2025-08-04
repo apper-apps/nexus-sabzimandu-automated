@@ -22,7 +22,7 @@ export const orderService = {
     return ordersData.filter(o => o.userId === userId);
   },
 
-  async create(order) {
+async create(order) {
     await delay(500);
     const maxId = Math.max(...ordersData.map(o => o.Id), 0);
     const newOrder = {
@@ -30,7 +30,9 @@ export const orderService = {
       Id: maxId + 1,
       userId: "user123", // Mock user ID
       createdAt: new Date().toISOString(),
-updatedAt: new Date().toISOString()
+updatedAt: new Date().toISOString(),
+      isSubscriptionOrder: order.isSubscriptionOrder || false,
+      subscriptionId: order.subscriptionId || null
     };
     ordersData.push(newOrder);
     

@@ -12,6 +12,7 @@ import Account from "@/components/pages/Account";
 import OrderConfirmation from "@/components/pages/OrderConfirmation";
 import LoyaltyPoints from "@/components/pages/LoyaltyPoints";
 import WhatsAppCatalog from "@/components/pages/WhatsAppCatalog";
+import Subscriptions from "@/components/pages/Subscriptions";
 import { CartProvider } from "@/hooks/useCart";
 import { LanguageProvider } from "@/hooks/useLanguage";
 function App() {
@@ -58,6 +59,7 @@ function App() {
                 <Route path="/checkout" element={<Checkout />} />
 <Route path="/orders" element={<Orders />} />
                 <Route path="/account" element={<Account />} />
+                <Route path="/subscriptions" element={<Subscriptions />} />
                 <Route path="/loyalty-points" element={<LoyaltyPoints />} />
                 <Route path="/order-confirmation/:orderId" element={<OrderConfirmation />} />
               </Routes>
