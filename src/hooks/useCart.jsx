@@ -2,6 +2,7 @@ import React, { createContext, useContext, useReducer, useEffect } from "react";
 import { toast } from "react-toastify";
 import { recipeBundleService } from "@/services/api/recipeBundleService";
 import { loyaltyService } from "@/services/api/loyaltyService";
+import { whatsappService } from "@/services/api/whatsappService";
 const CartContext = createContext();
 
 const cartReducer = (state, action) => {
@@ -184,8 +185,7 @@ const getTotalItems = () => {
     return item ? item.quantity : 0;
   };
 
-  const generateWhatsAppMessage = (customerInfo = {}) => {
-    const { whatsappService } = require('@/services/api/whatsappService');
+const generateWhatsAppMessage = (customerInfo = {}) => {
     return whatsappService.formatCartOrderMessage(state.items, getTotalPrice(), customerInfo);
   };
 

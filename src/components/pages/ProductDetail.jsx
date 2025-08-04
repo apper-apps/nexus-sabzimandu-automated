@@ -9,6 +9,7 @@ import { productService } from "@/services/api/productService";
 import { useCart } from "@/hooks/useCart";
 import { useLanguage } from "@/hooks/useLanguage";
 import { cn } from "@/utils/cn";
+import { whatsappService } from "@/services/api/whatsappService";
 
 const ProductDetail = () => {
   const { id } = useParams();
@@ -285,8 +286,7 @@ const ProductDetail = () => {
           </Button>
 <Button 
             variant="secondary" 
-            onClick={() => {
-              const { whatsappService } = require('@/services/api/whatsappService');
+onClick={() => {
               whatsappService.openProductInWhatsApp(product, selectedWeight, quantity);
             }}
             className="flex-1 bg-green-500 hover:bg-green-600 text-white"

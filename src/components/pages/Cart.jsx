@@ -5,6 +5,7 @@ import Button from "@/components/atoms/Button";
 import ApperIcon from "@/components/ApperIcon";
 import Empty from "@/components/ui/Empty";
 import { useCart } from "@/hooks/useCart";
+import { whatsappService } from "@/services/api/whatsappService";
 import { useLanguage } from "@/hooks/useLanguage";
 
 const Cart = () => {
@@ -123,8 +124,7 @@ const Cart = () => {
           {/* WhatsApp Order Button */}
           <Button 
             variant="primary" 
-            onClick={() => {
-              const { whatsappService } = require('@/services/api/whatsappService');
+onClick={() => {
               whatsappService.openCartOrderInWhatsApp(items, totalPrice, {});
             }}
             className="w-full bg-green-500 hover:bg-green-600 text-white"
