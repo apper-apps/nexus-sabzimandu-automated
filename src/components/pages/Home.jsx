@@ -362,9 +362,6 @@ const loadData = async () => {
           </div>
         </div>
       </div>
-          </div>
-        </div>
-      </div>
 
 {/* Quick Categories */}
       <div className="px-4">
