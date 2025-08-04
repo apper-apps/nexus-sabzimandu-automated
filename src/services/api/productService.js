@@ -1,4 +1,5 @@
 import productsData from "@/services/mockData/products.json";
+import { recipeBundleService } from "./recipeBundleService";
 
 const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
@@ -36,8 +37,7 @@ export const productService = {
       p.category.toLowerCase().includes(searchTerm)
     );
   },
-
-  async create(product) {
+async create(product) {
     await delay(500);
     const maxId = Math.max(...productsData.map(p => p.Id), 0);
     const newProduct = {
@@ -67,5 +67,17 @@ export const productService = {
     }
     const deleted = productsData.splice(index, 1)[0];
     return { ...deleted };
+  },
+
+  async searchRecipes(query) {
+    return await recipeBundleService.searchRecipes(query);
+  },
+
+  async getRecipeBundle(recipeKey) {
+    return await recipeBundleService.getBundle(recipeKey);
+  },
+
+  async getRecipeBundles() {
+    return await recipeBundleService.getAllBundles();
   }
 };

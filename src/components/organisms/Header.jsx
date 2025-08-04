@@ -12,13 +12,17 @@ const Header = () => {
   const { language, toggleLanguage, t } = useLanguage();
   const totalItems = getTotalItems();
 
-  const handleSearch = (searchTerm) => {
+const handleSearch = (searchTerm) => {
     if (searchTerm.trim()) {
       navigate(`/categories?search=${encodeURIComponent(searchTerm)}`);
     }
   };
 
-  return (
+  const handleRecipeSelect = (recipe) => {
+    navigate(`/?recipe=${recipe.key}`, { state: { recipe } });
+  };
+
+return (
     <header className="bg-white shadow-sm border-b border-gray-200 sticky top-0 z-40">
       <div className="px-4 py-3">
         {/* Top row */}
@@ -66,7 +70,7 @@ const Header = () => {
         </div>
         
         {/* Search bar */}
-        <SearchBar onSearch={handleSearch} />
+        <SearchBar onSearch={handleSearch} onRecipeSelect={handleRecipeSelect} />
       </div>
     </header>
   );

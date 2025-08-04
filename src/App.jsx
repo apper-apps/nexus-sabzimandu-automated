@@ -48,7 +48,7 @@ function App() {
         <BrowserRouter>
           <div className="min-h-screen bg-gray-50">
             <Layout>
-              <Routes>
+<Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/categories" element={<Categories />} />
                 <Route path="/categories/:category" element={<Categories />} />

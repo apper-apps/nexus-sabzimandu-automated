@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import ProductCard from "@/components/molecules/ProductCard";
 import CategoryCard from "@/components/molecules/CategoryCard";
 import Button from "@/components/atoms/Button";
@@ -10,27 +10,35 @@ import Error from "@/components/ui/Error";
 import { productService } from "@/services/api/productService";
 import { categoryService } from "@/services/api/categoryService";
 import { useLanguage } from "@/hooks/useLanguage";
+import { useCart } from "@/hooks/useCart";
+import { recipeBundleService } from "@/services/api/recipeBundleService";
 
 const Home = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const { t } = useLanguage();
+  const { addBundleToCart } = useCart();
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
+  const [recipeBundles, setRecipeBundles] = useState([]);
+  const [selectedRecipe, setSelectedRecipe] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const loadData = async () => {
+const loadData = async () => {
     try {
       setLoading(true);
       setError(null);
       
-      const [productsData, categoriesData] = await Promise.all([
+      const [productsData, categoriesData, recipeBundlesData] = await Promise.all([
         productService.getFeatured(),
-        categoryService.getAll()
+        categoryService.getAll(),
+        productService.getRecipeBundles()
       ]);
       
       setProducts(productsData);
       setCategories(categoriesData.slice(0, 6));
+      setRecipeBundles(recipeBundlesData);
     } catch (err) {
       setError(err.message);
     } finally {
@@ -42,11 +50,114 @@ const Home = () => {
     loadData();
   }, []);
 
+  useEffect(() => {
+    // Handle recipe selection from search
+    const urlParams = new URLSearchParams(location.search);
+    const recipeKey = urlParams.get('recipe');
+    const recipeFromState = location.state?.recipe;
+    
+    if (recipeFromState) {
+      setSelectedRecipe(recipeFromState);
+    } else if (recipeKey) {
+      const bundle = recipeBundles.find(r => r.key === recipeKey);
+      if (bundle) {
+        setSelectedRecipe(bundle);
+      }
+    }
+  }, [location, recipeBundles]);
+
+  const handleAddBundle = async (recipeKey) => {
+    await addBundleToCart(recipeKey);
+    setSelectedRecipe(null);
+  };
   if (loading) return <Loading />;
   if (error) return <Error message={error} onRetry={loadData} />;
 
   return (
-    <div className="space-y-6">
+<div className="space-y-6">
+      {/* Recipe Mode Section */}
+      {selectedRecipe && (
+        <div className="bg-gradient-to-r from-orange-50 to-yellow-50 rounded-xl p-6 border border-orange-200">
+          <div className="flex items-start justify-between mb-4">
+            <div className="flex items-center gap-3">
+              <div className="w-12 h-12 gradient-secondary rounded-xl flex items-center justify-center">
+                <ApperIcon name="ChefHat" size={24} className="text-white" />
+              </div>
+              <div>
+                <h2 className="text-xl font-display font-bold text-gray-900">
+                  {t("Recipe Mode", "ترکیب موڈ")}
+                </h2>
+                <p className="text-gray-600 text-sm">
+                  {t("Complete ingredients for your recipe", "آپ کی ترکیب کے لیے مکمل اجزاء")}
+                </p>
+              </div>
+            </div>
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={() => setSelectedRecipe(null)}
+              className="text-gray-400 hover:text-gray-600"
+            >
+              <ApperIcon name="X" size={20} />
+            </Button>
+          </div>
+          
+          <div className="bg-white rounded-xl p-6 shadow-sm">
+            <div className="flex items-start gap-4">
+              <div className="w-20 h-20 rounded-xl overflow-hidden flex-shrink-0">
+                <img
+                  src={selectedRecipe.image}
+                  alt={selectedRecipe.name}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div className="flex-1">
+                <h3 className="text-lg font-display font-bold text-gray-900 mb-2">
+                  {selectedRecipe.name}
+                </h3>
+                <p className="text-gray-600 mb-4">
+                  {selectedRecipe.description}
+                </p>
+                
+                <div className="flex items-center gap-4 mb-4">
+                  <span className="text-2xl font-bold text-primary">
+                    ₹{selectedRecipe.totalPrice}
+                  </span>
+                  <Badge variant="success" className="text-sm">
+                    Save ₹{selectedRecipe.savings}
+                  </Badge>
+                </div>
+                
+                <Button
+                  onClick={() => handleAddBundle(selectedRecipe.key)}
+                  className="w-full sm:w-auto"
+                >
+                  <ApperIcon name="ShoppingCart" size={18} className="mr-2" />
+                  {t("Add Complete Bundle", "مکمل بنڈل شامل کریں")}
+                </Button>
+              </div>
+            </div>
+            
+            {/* Ingredients List */}
+            <div className="mt-6 pt-6 border-t border-gray-200">
+              <h4 className="font-medium text-gray-900 mb-3">
+                {t("Included Ingredients:", "شامل اجزاء:")}
+              </h4>
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
+                {selectedRecipe.ingredients?.slice(0, 8).map((ingredient, index) => (
+                  <div key={index} className="flex items-center gap-2 text-sm text-gray-600">
+                    <div className="w-2 h-2 bg-primary rounded-full flex-shrink-0"></div>
+                    <span className="truncate">
+                      {ingredient.name} ({ingredient.weight})
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Hero Banner */}
       <div className="relative overflow-hidden">
         <div className="bg-gradient-to-br from-primary via-primary to-success p-6 text-white">
@@ -68,6 +179,77 @@ const Home = () => {
           <div className="absolute inset-0 bg-gradient-to-r from-transparent to-white/10"></div>
         </div>
       </div>
+
+{/* Recipe Bundles */}
+      {recipeBundles.length > 0 && (
+        <section>
+          <div className="flex items-center justify-between mb-4">
+            <div>
+              <h2 className="text-xl font-display font-bold text-gray-900 mb-1">
+                {t("Recipe Bundles", "ریسپی بنڈلز")}
+              </h2>
+              <p className="text-gray-600 text-sm">
+                {t("Complete ingredients for popular recipes", "مشہور ترکیبوں کے لیے مکمل اجزاء")}
+              </p>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {recipeBundles.slice(0, 6).map((bundle) => (
+              <div
+                key={bundle.key}
+                className="bg-white rounded-xl p-4 shadow-sm border border-gray-200 hover:shadow-md transition-shadow cursor-pointer"
+                onClick={() => setSelectedRecipe(bundle)}
+              >
+                <div className="flex items-start gap-3">
+                  <div className="w-16 h-16 rounded-lg overflow-hidden flex-shrink-0">
+                    <img
+                      src={bundle.image}
+                      alt={bundle.name}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <h3 className="font-medium text-gray-900 mb-1 line-clamp-1">
+                      {bundle.name}
+                    </h3>
+                    <p className="text-sm text-gray-600 mb-2 line-clamp-2">
+                      {bundle.description}
+                    </p>
+                    <div className="flex items-center justify-between">
+                      <span className="text-lg font-bold text-primary">
+                        ₹{bundle.totalPrice}
+                      </span>
+                      <Badge variant="success" className="text-xs">
+                        Save ₹{bundle.savings}
+                      </Badge>
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="mt-3 pt-3 border-t border-gray-100">
+                  <div className="flex items-center justify-between">
+                    <span className="text-xs text-gray-500">
+                      {bundle.ingredients?.length} items
+                    </span>
+                    <Button
+                      size="sm"
+                      variant="outline"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleAddBundle(bundle.key);
+                      }}
+                    >
+                      <ApperIcon name="Plus" size={14} className="mr-1" />
+                      Add Bundle
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
 
       {/* Quick Categories */}
       <div className="px-4">
@@ -167,7 +349,7 @@ const Home = () => {
           </div>
         </div>
       </div>
-    </div>
+</div>
   );
 };
 

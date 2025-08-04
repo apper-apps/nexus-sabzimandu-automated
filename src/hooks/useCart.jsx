@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useReducer, useEffect } from "react";
 import { toast } from "react-toastify";
-
+import { recipeBundleService } from "@/services/api/recipeBundleService";
 const CartContext = createContext();
 
 const cartReducer = (state, action) => {
@@ -99,7 +99,7 @@ export const CartProvider = ({ children }) => {
     localStorage.setItem("sabziMandu_cart", JSON.stringify(state.items));
   }, [state.items]);
 
-  const addToCart = (product, quantity = 1, selectedWeight = "1kg") => {
+const addToCart = (product, quantity = 1, selectedWeight = "1kg") => {
     const cartItem = {
       productId: product.Id,
       productName: product.name,
@@ -116,6 +116,33 @@ export const CartProvider = ({ children }) => {
     toast.success(`${product.name} added to cart!`);
   };
 
+  const addBundleToCart = async (recipeKey) => {
+    try {
+      const bundle = await recipeBundleService.getBundle(recipeKey);
+      
+      bundle.ingredients.forEach(ingredient => {
+        const cartItem = {
+          productId: ingredient.productId,
+          productName: ingredient.name,
+          productNameUrdu: ingredient.nameUrdu || ingredient.name,
+          quantity: ingredient.quantity,
+          selectedWeight: ingredient.weight,
+          price: ingredient.price,
+          image: ingredient.image || "https://via.placeholder.com/400x400/e5e7eb/9ca3af?text=Bundle+Item",
+          unit: ingredient.unit || "kg",
+          vendorName: ingredient.vendorName || "SabziMandu"
+        };
+        
+        dispatch({ type: "ADD_ITEM", payload: cartItem });
+      });
+
+      toast.success(`${bundle.name} bundle added to cart! Saved ₹${bundle.savings}`, {
+        autoClose: 4000
+      });
+    } catch (error) {
+      toast.error("Failed to add bundle to cart");
+    }
+  };
   const updateQuantity = (productId, selectedWeight, quantity) => {
     dispatch({ 
       type: "UPDATE_QUANTITY", 
@@ -135,8 +162,7 @@ export const CartProvider = ({ children }) => {
     dispatch({ type: "CLEAR_CART" });
     toast.success("Cart cleared");
   };
-
-  const getTotalItems = () => {
+const getTotalItems = () => {
     return state.items.reduce((total, item) => total + item.quantity, 0);
   };
 
@@ -155,6 +181,7 @@ export const CartProvider = ({ children }) => {
     <CartContext.Provider value={{
       items: state.items,
       addToCart,
+      addBundleToCart,
       updateQuantity,
       removeFromCart,
       clearCart,
