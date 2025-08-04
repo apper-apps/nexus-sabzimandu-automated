@@ -155,11 +155,11 @@ return (
             </div>
           </div>
           
-          {/* Loyalty Points Badge */}
+{/* Sabzi Points Badge */}
           <div className="flex items-center justify-between mb-2">
-            <Badge variant="secondary" size="sm" className="text-xs">
+            <Badge variant="secondary" size="sm" className="text-xs bg-emerald-50 text-emerald-700 border-emerald-200">
               <ApperIcon name="Award" size={10} className="mr-1" />
-              {Math.floor((product?.price || 0) / 10)} {t("Points", "پوائنٹس")}
+              {Math.floor((product?.price || 0) / 10)} {t("Sabzi Points", "سبزی پوائنٹس")}
             </Badge>
           </div>
         </div>

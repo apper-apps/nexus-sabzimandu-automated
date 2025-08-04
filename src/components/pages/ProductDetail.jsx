@@ -309,13 +309,13 @@ onClick={() => {
         </div>
         
         {/* WhatsApp Catalog Access */}
-        <div className="mt-3">
+<div className="mt-3">
           <Button 
             variant="outline" 
             onClick={() => navigate("/whatsapp-catalog")}
-            className="w-full"
+            className="w-full border-emerald-200 text-emerald-700 hover:bg-emerald-50"
           >
-            <ApperIcon name="Catalog" size={16} className="mr-2" />
+            <ApperIcon name="MessageCircle" size={16} className="mr-2" />
             {t("View WhatsApp Catalog", "واٹس ایپ کیٹالاگ دیکھیں")}
           </Button>
         </div>
