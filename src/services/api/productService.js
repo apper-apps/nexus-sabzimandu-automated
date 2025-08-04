@@ -1,16 +1,14 @@
 import productsData from "@/services/mockData/products.json";
-import { recipeBundleService } from "./recipeBundleService";
+import { recipeBundleService } from "@/services/api/recipeBundleService";
 
-const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
-
+// Removed delay for better performance
 export const productService = {
-  async getAll() {
-    await delay(300);
+async getAll() {
     return [...productsData];
   },
 
   async getById(id) {
-    await delay(200);
+// Removed delay for better performance
     const product = productsData.find(p => p.Id === id);
     if (!product) {
       throw new Error("Product not found");
@@ -18,18 +16,16 @@ export const productService = {
     return { ...product };
   },
 
-  async getFeatured() {
-    await delay(300);
+async getFeatured() {
     return productsData.filter(p => p.rating >= 4.0).slice(0, 12);
   },
 
   async getByCategory(category) {
-    await delay(300);
+// Removed delay for better performance
     return productsData.filter(p => p.category.toLowerCase() === category.toLowerCase());
   },
 
-  async search(query) {
-    await delay(400);
+async search(query) {
     const searchTerm = query.toLowerCase();
     return productsData.filter(p => 
       p.name.toLowerCase().includes(searchTerm) ||
@@ -38,7 +34,6 @@ export const productService = {
     );
   },
 async create(product) {
-    await delay(500);
     const maxId = Math.max(...productsData.map(p => p.Id), 0);
     const newProduct = {
       ...product,
@@ -49,8 +44,7 @@ async create(product) {
     return { ...newProduct };
   },
 
-  async update(id, updates) {
-    await delay(400);
+async update(id, updates) {
     const index = productsData.findIndex(p => p.Id === id);
     if (index === -1) {
       throw new Error("Product not found");
@@ -60,7 +54,7 @@ async create(product) {
   },
 
   async delete(id) {
-    await delay(300);
+// Removed delay for better performance
     const index = productsData.findIndex(p => p.Id === id);
     if (index === -1) {
       throw new Error("Product not found");

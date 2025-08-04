@@ -1,18 +1,19 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Suspense } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import Layout from "@/components/organisms/Layout";
-import Home from "@/components/pages/Home";
-import Categories from "@/components/pages/Categories";
-import ProductDetail from "@/components/pages/ProductDetail";
-import Cart from "@/components/pages/Cart";
-import Checkout from "@/components/pages/Checkout";
-import Orders from "@/components/pages/Orders";
-import Account from "@/components/pages/Account";
-import OrderConfirmation from "@/components/pages/OrderConfirmation";
-import LoyaltyPoints from "@/components/pages/LoyaltyPoints";
-import WhatsAppCatalog from "@/components/pages/WhatsAppCatalog";
-import Subscriptions from "@/components/pages/Subscriptions";
+// Lazy load components for better performance
+const Home = React.lazy(() => import("@/components/pages/Home"));
+const Categories = React.lazy(() => import("@/components/pages/Categories"));
+const ProductDetail = React.lazy(() => import("@/components/pages/ProductDetail"));
+const Cart = React.lazy(() => import("@/components/pages/Cart"));
+const Checkout = React.lazy(() => import("@/components/pages/Checkout"));
+const Orders = React.lazy(() => import("@/components/pages/Orders"));
+const Account = React.lazy(() => import("@/components/pages/Account"));
+const OrderConfirmation = React.lazy(() => import("@/components/pages/OrderConfirmation"));
+const LoyaltyPoints = React.lazy(() => import("@/components/pages/LoyaltyPoints"));
+const WhatsAppCatalog = React.lazy(() => import("@/components/pages/WhatsAppCatalog"));
+const Subscriptions = React.lazy(() => import("@/components/pages/Subscriptions"));
 import { CartProvider } from "@/hooks/useCart";
 import { LanguageProvider } from "@/hooks/useLanguage";
 function App() {
@@ -49,20 +50,26 @@ return (
       <CartProvider>
         <BrowserRouter>
           <div className="min-h-screen bg-gray-50">
-            <Layout>
-<Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/categories" element={<Categories />} />
-                <Route path="/categories/:category" element={<Categories />} />
-                <Route path="/product/:id" element={<ProductDetail />} />
-                <Route path="/cart" element={<Cart />} />
-                <Route path="/checkout" element={<Checkout />} />
-<Route path="/orders" element={<Orders />} />
-                <Route path="/account" element={<Account />} />
-                <Route path="/subscriptions" element={<Subscriptions />} />
-                <Route path="/loyalty-points" element={<LoyaltyPoints />} />
-                <Route path="/order-confirmation/:orderId" element={<OrderConfirmation />} />
-              </Routes>
+<Layout>
+              <Suspense fallback={
+                <div className="flex items-center justify-center min-h-screen">
+                  <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
+                </div>
+              }>
+                <Routes>
+                  <Route path="/" element={<Home />} />
+                  <Route path="/categories" element={<Categories />} />
+                  <Route path="/categories/:category" element={<Categories />} />
+                  <Route path="/product/:id" element={<ProductDetail />} />
+                  <Route path="/cart" element={<Cart />} />
+                  <Route path="/checkout" element={<Checkout />} />
+                  <Route path="/orders" element={<Orders />} />
+                  <Route path="/account" element={<Account />} />
+                  <Route path="/subscriptions" element={<Subscriptions />} />
+                  <Route path="/loyalty-points" element={<LoyaltyPoints />} />
+                  <Route path="/order-confirmation/:orderId" element={<OrderConfirmation />} />
+                </Routes>
+              </Suspense>
             </Layout>
             <ToastContainer
               position="top-right"

@@ -281,10 +281,12 @@ const loadData = async () => {
                 >
                   <div className="flex items-start gap-3">
                     <div className="w-16 h-16 rounded-lg overflow-hidden flex-shrink-0">
-                      <img
+<img
                         src={bundle.image}
                         alt={bundle.name}
                         className="w-full h-full object-cover"
+                        loading="lazy"
+                        decoding="async"
                       />
                     </div>
                     <div className="flex-1 min-w-0">
@@ -410,10 +412,11 @@ const loadData = async () => {
             <div key={deal.Id} className="bg-white rounded-card shadow-card hover:shadow-elevated transition-all duration-300 hover:scale-105 overflow-hidden">
               <div className="relative">
                 <img 
-                  src={deal.images[0]}
+src={deal.images[0]}
                   alt={deal.name}
                   className="w-full h-32 object-cover"
                   loading="lazy"
+                  decoding="async"
                 />
                 <Badge 
                   variant="accent" 

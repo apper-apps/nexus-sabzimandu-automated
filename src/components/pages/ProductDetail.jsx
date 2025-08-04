@@ -87,10 +87,13 @@ const [product, setProduct] = useState(null);
       {/* Product Images */}
       <div className="relative">
         <div className="aspect-square bg-gray-100">
-          <img 
+<img 
             src={product.images[currentImageIndex]} 
             alt={product.name}
             className="w-full h-full object-cover"
+            loading="lazy"
+            decoding="async"
+            fetchpriority="high"
           />
         </div>
         
