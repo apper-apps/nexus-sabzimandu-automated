@@ -270,62 +270,98 @@ Rs. {selectedRecipe.totalPrice}
             </div>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {recipeBundles.slice(0, 6).map((bundle) => (
-              <div
-                key={bundle.key}
-                className="bg-white rounded-xl p-4 shadow-sm border border-gray-200 hover:shadow-md transition-shadow cursor-pointer"
-                onClick={() => setSelectedRecipe(bundle)}
-              >
-                <div className="flex items-start gap-3">
-                  <div className="w-16 h-16 rounded-lg overflow-hidden flex-shrink-0">
-                    <img
-                      src={bundle.image}
-                      alt={bundle.name}
-                      className="w-full h-full object-cover"
-                    />
+<div className="px-4">
+            <div className="flex gap-4 overflow-x-auto pb-4 -mx-4 px-4 scrollbar-hide" style={{scrollbarWidth: 'none', msOverflowStyle: 'none'}}>
+              {recipeBundles.slice(0, 8).map((bundle) => (
+                <div
+                  key={bundle.key}
+                  className="bg-white rounded-xl p-4 shadow-sm border border-gray-200 hover:shadow-md transition-shadow cursor-pointer flex-shrink-0 w-72"
+                  onClick={() => setSelectedRecipe(bundle)}
+                >
+                  <div className="flex items-start gap-3">
+                    <div className="w-16 h-16 rounded-lg overflow-hidden flex-shrink-0">
+                      <img
+                        src={bundle.image}
+                        alt={bundle.name}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <h3 className="font-medium text-gray-900 mb-1 line-clamp-1">
+                        {bundle.name}
+                      </h3>
+                      <p className="text-sm text-gray-600 mb-2 line-clamp-2">
+                        {bundle.description}
+                      </p>
+                      <div className="flex items-center justify-between">
+                        <span className="text-lg font-bold text-primary">
+                          Rs. {bundle.totalPrice}
+                        </span>
+                        <Badge variant="success" className="text-xs">
+                          Save Rs. {bundle.savings}
+                        </Badge>
+                      </div>
+                    </div>
                   </div>
-                  <div className="flex-1 min-w-0">
-                    <h3 className="font-medium text-gray-900 mb-1 line-clamp-1">
-                      {bundle.name}
-                    </h3>
-                    <p className="text-sm text-gray-600 mb-2 line-clamp-2">
-                      {bundle.description}
-                    </p>
+                  
+                  <div className="mt-3 pt-3 border-t border-gray-100">
                     <div className="flex items-center justify-between">
-                      <span className="text-lg font-bold text-primary">
-Rs. {bundle.totalPrice}
+                      <span className="text-xs text-gray-500">
+                        {bundle.ingredients?.length} items
                       </span>
-                      <Badge variant="success" className="text-xs">
-                        Save Rs. {bundle.savings}
-                      </Badge>
+                      <Button
+                        size="sm"
+                        variant="outline"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleAddBundle(bundle.key);
+                        }}
+                      >
+                        <ApperIcon name="Plus" size={14} className="mr-1" />
+                        Add Bundle
+                      </Button>
                     </div>
                   </div>
                 </div>
-                
-                <div className="mt-3 pt-3 border-t border-gray-100">
-                  <div className="flex items-center justify-between">
-                    <span className="text-xs text-gray-500">
-                      {bundle.ingredients?.length} items
-                    </span>
-                    <Button
-                      size="sm"
-                      variant="outline"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        handleAddBundle(bundle.key);
-                      }}
-                    >
-                      <ApperIcon name="Plus" size={14} className="mr-1" />
-                      Add Bundle
-                    </Button>
-                  </div>
-                </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </section>
       )}
+
+      {/* WhatsApp Catalog Banner */}
+      <div className="px-4">
+        <div className="bg-gradient-to-r from-green-500/10 to-green-600/10 rounded-xl p-4 border border-green-200">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div className="w-12 h-12 bg-green-500 rounded-xl flex items-center justify-center">
+                <ApperIcon name="MessageCircle" size={24} className="text-white" />
+              </div>
+              <div>
+                <h3 className="font-display font-bold text-gray-900">
+                  {t("Order via WhatsApp", "واٹس ایپ کے ذریعے آرڈر کریں")}
+                </h3>
+                <p className="text-sm text-gray-600 font-body">
+                  {t("Browse our complete catalog", "ہماری مکمل کیٹالاگ دیکھیں")}
+                </p>
+              </div>
+            </div>
+            <Button
+              variant="outline"
+              size="sm"
+onClick={() => {
+                import('@/services/api/whatsappService').then(({ whatsappService }) => {
+                  whatsappService.openCatalogInWhatsApp(products);
+                });
+              }}
+              className="border-green-500 text-green-600 hover:bg-green-500 hover:text-white"
+            >
+              <ApperIcon name="ExternalLink" size={14} className="mr-1" />
+              {t("Open Catalog", "کیٹالاگ کھولیں")}
+            </Button>
+          </div>
+        </div>
+      </div>
 
       {/* Quick Categories */}
       <div className="px-4">
