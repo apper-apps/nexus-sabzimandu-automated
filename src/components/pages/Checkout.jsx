@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Button from "@/components/atoms/Button";
 import Input from "@/components/atoms/Input";
@@ -134,8 +134,15 @@ clearCart();
     }
   };
 
+// Handle empty cart navigation in useEffect to prevent setState during render
+  useEffect(() => {
+    if (items.length === 0) {
+      navigate("/cart");
+    }
+  }, [items.length, navigate]);
+
+  // Early return for empty cart state
   if (items.length === 0) {
-    navigate("/cart");
     return null;
   }
 
