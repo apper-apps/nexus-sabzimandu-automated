@@ -387,8 +387,7 @@ const loadData = async () => {
           ))}
         </div>
       </div>
-
-{/* Special Deals Section */}
+{/* Special Deals Section - 3 Themed Offers */}
       <div className="px-4 mb-6">
         <div className="bg-gradient-to-r from-warning/10 to-secondary/10 rounded-card p-4 mb-4">
           <div className="flex items-center justify-between">
@@ -398,7 +397,7 @@ const loadData = async () => {
                 {t("Special Deals", "خصوصی ڈیلز")}
               </h3>
               <p className="text-sm text-gray-600 font-body">
-                {t("Pakistani cuisine combos at great prices", "بہترین قیمتوں پر پاکستانی کھانے کے کمبو")}
+                {t("Tonight's special cuisine offers", "آج رات کی خصوصی کھانے کی پیشکشیں")}
               </p>
             </div>
             <Badge variant="warning" size="lg">
@@ -408,77 +407,231 @@ const loadData = async () => {
         </div>
         
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
-          {deals.map((deal) => (
-            <div key={deal.Id} className="bg-white rounded-card shadow-card hover:shadow-elevated transition-all duration-300 hover:scale-105 overflow-hidden">
-              <div className="relative">
-                <img 
-src={deal.images[0]}
-                  alt={deal.name}
-                  className="w-full h-32 object-cover"
-                  loading="lazy"
-                  decoding="async"
-                />
-                <Badge 
-                  variant="accent" 
-                  size="sm" 
-                  className="absolute top-2 left-2"
-                >
-                  {deal.discount}% {t("OFF", "رعایت")}
-                </Badge>
-                <div className="absolute top-2 right-2 bg-white/90 backdrop-blur-sm rounded-full p-1">
-                  <div className="w-2 h-2 bg-success rounded-full"></div>
+          {/* Pizza Night Deal */}
+          <div className="bg-white rounded-card shadow-card hover:shadow-elevated transition-all duration-300 hover:scale-105 overflow-hidden">
+            <div className="relative">
+              <img 
+                src="https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=400&h=200&fit=crop"
+                alt="Pizza Night"
+                className="w-full h-32 object-cover"
+                loading="lazy"
+                decoding="async"
+              />
+              <Badge 
+                variant="accent" 
+                size="sm" 
+                className="absolute top-2 left-2"
+              >
+                25% {t("OFF", "رعایت")}
+              </Badge>
+              <div className="absolute top-2 right-2 bg-white/90 backdrop-blur-sm rounded-full p-1">
+                <div className="w-2 h-2 bg-success rounded-full"></div>
+              </div>
+            </div>
+            
+            <div className="p-3">
+              <h4 className="font-display font-semibold text-gray-900 text-sm mb-1">
+                {t("Pizza Night Special", "پیزا نائٹ اسپیشل")}
+              </h4>
+              <p className="text-xs text-gray-600 font-body mb-2 line-clamp-2">
+                {t("Fresh tomatoes, cheese, and herbs combo", "تازہ ٹماٹر، پنیر اور جڑی بوٹیوں کا کمبو")}
+              </p>
+              
+              <div className="flex items-center justify-between mb-2">
+                <div className="flex items-center space-x-2">
+                  <span className="text-xs text-gray-500 line-through">
+                    Rs. 400
+                  </span>
+                  <span className="text-lg font-display font-bold text-emerald-600">
+                    Rs. 300
+                  </span>
+                </div>
+                <div className="flex items-center space-x-1">
+                  <ApperIcon name="Star" size={12} className="text-warning fill-current" />
+                  <span className="text-xs text-gray-600">4.7</span>
                 </div>
               </div>
               
-              <div className="p-3">
-                <h4 className="font-display font-semibold text-gray-900 text-sm mb-1 line-clamp-2">
-                  {t(deal.name, deal.nameUrdu)}
-                </h4>
-                <p className="text-xs text-gray-600 font-body mb-2 line-clamp-2">
-                  {deal.description}
-                </p>
-                
-                <div className="flex items-center justify-between mb-2">
-                  <div className="flex items-center space-x-2">
-                    <span className="text-xs text-gray-500 line-through">
-                      Rs. {deal.originalPrice.toLocaleString()}
-                    </span>
-                    <span className="text-lg font-display font-bold text-emerald-600">
-                      Rs. {deal.price.toLocaleString()}
-                    </span>
-                  </div>
-                  <div className="flex items-center space-x-1">
-                    <ApperIcon name="Star" size={12} className="text-warning fill-current" />
-                    <span className="text-xs text-gray-600">{deal.rating}</span>
-                  </div>
-                </div>
-                
-                <div className="flex items-center justify-between mb-2">
-                  <Badge variant="secondary" size="sm" className="text-xs">
-                    <ApperIcon name="Award" size={10} className="mr-1" />
-                    {Math.floor(deal.price / 10)} {t("Points", "پوائنٹس")}
-                  </Badge>
-                  <span className="text-xs text-emerald-600 font-medium">
-                    {t("Save", "بچت")} Rs. {(deal.originalPrice - deal.price).toLocaleString()}
-                  </span>
-                </div>
-                
-                <Button 
-                  variant="primary" 
-                  size="sm" 
-                  onClick={() => addToCart(deal, 1, deal.weightOptions[0])}
-                  className="w-full mt-2"
-                >
-                  <ApperIcon name="Plus" size={14} className="mr-1" />
-                  {t("Add to Cart", "کارٹ میں شامل کریں")}
-                </Button>
+              <div className="flex items-center justify-between mb-2">
+                <Badge variant="secondary" size="sm" className="text-xs">
+                  <ApperIcon name="Award" size={10} className="mr-1" />
+                  30 {t("Points", "پوائنٹس")}
+                </Badge>
+                <span className="text-xs text-emerald-600 font-medium">
+                  {t("Save", "بچت")} Rs. 100
+                </span>
+              </div>
+              
+              <Button 
+                variant="primary" 
+                size="sm" 
+                onClick={() => addToCart({
+                  Id: 101,
+                  name: "Pizza Night Special",
+                  price: 300,
+                  originalPrice: 400,
+                  weightOptions: ["combo"],
+                  images: ["https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=400"]
+                }, 1, "combo")}
+                className="w-full mt-2"
+              >
+                <ApperIcon name="Plus" size={14} className="mr-1" />
+                {t("Add to Cart", "کارٹ میں شامل کریں")}
+              </Button>
+            </div>
+          </div>
+
+          {/* BBQ Deal */}
+          <div className="bg-white rounded-card shadow-card hover:shadow-elevated transition-all duration-300 hover:scale-105 overflow-hidden">
+            <div className="relative">
+              <img 
+                src="https://images.unsplash.com/photo-1544025162-d76694265947?w=400&h=200&fit=crop"
+                alt="BBQ Special"
+                className="w-full h-32 object-cover"
+                loading="lazy"
+                decoding="async"
+              />
+              <Badge 
+                variant="accent" 
+                size="sm" 
+                className="absolute top-2 left-2"
+              >
+                30% {t("OFF", "رعایت")}
+              </Badge>
+              <div className="absolute top-2 right-2 bg-white/90 backdrop-blur-sm rounded-full p-1">
+                <div className="w-2 h-2 bg-success rounded-full"></div>
               </div>
             </div>
-          ))}
+            
+            <div className="p-3">
+              <h4 className="font-display font-semibold text-gray-900 text-sm mb-1">
+                {t("BBQ Grill Pack", "بی بی کیو گرل پیک")}
+              </h4>
+              <p className="text-xs text-gray-600 font-body mb-2 line-clamp-2">
+                {t("Premium vegetables for perfect grilling", "بہترین گرلنگ کے لیے پریمیم سبزیاں")}
+              </p>
+              
+              <div className="flex items-center justify-between mb-2">
+                <div className="flex items-center space-x-2">
+                  <span className="text-xs text-gray-500 line-through">
+                    Rs. 500
+                  </span>
+                  <span className="text-lg font-display font-bold text-emerald-600">
+                    Rs. 350
+                  </span>
+                </div>
+                <div className="flex items-center space-x-1">
+                  <ApperIcon name="Star" size={12} className="text-warning fill-current" />
+                  <span className="text-xs text-gray-600">4.8</span>
+                </div>
+              </div>
+              
+              <div className="flex items-center justify-between mb-2">
+                <Badge variant="secondary" size="sm" className="text-xs">
+                  <ApperIcon name="Award" size={10} className="mr-1" />
+                  35 {t("Points", "پوائنٹس")}
+                </Badge>
+                <span className="text-xs text-emerald-600 font-medium">
+                  {t("Save", "بچت")} Rs. 150
+                </span>
+              </div>
+              
+              <Button 
+                variant="primary" 
+                size="sm" 
+                onClick={() => addToCart({
+                  Id: 102,
+                  name: "BBQ Grill Pack",
+                  price: 350,
+                  originalPrice: 500,
+                  weightOptions: ["pack"],
+                  images: ["https://images.unsplash.com/photo-1544025162-d76694265947?w=400"]
+                }, 1, "pack")}
+                className="w-full mt-2"
+              >
+                <ApperIcon name="Plus" size={14} className="mr-1" />
+                {t("Add to Cart", "کارٹ میں شامل کریں")}
+              </Button>
+            </div>
+          </div>
+
+          {/* Breakfast Deal */}
+          <div className="bg-white rounded-card shadow-card hover:shadow-elevated transition-all duration-300 hover:scale-105 overflow-hidden">
+            <div className="relative">
+              <img 
+                src="https://images.unsplash.com/photo-1506084868230-bb9d95c24759?w=400&h=200&fit=crop"
+                alt="Breakfast Special"
+                className="w-full h-32 object-cover"
+                loading="lazy"
+                decoding="async"
+              />
+              <Badge 
+                variant="accent" 
+                size="sm" 
+                className="absolute top-2 left-2"
+              >
+                20% {t("OFF", "رعایت")}
+              </Badge>
+              <div className="absolute top-2 right-2 bg-white/90 backdrop-blur-sm rounded-full p-1">
+                <div className="w-2 h-2 bg-success rounded-full"></div>
+              </div>
+            </div>
+            
+            <div className="p-3">
+              <h4 className="font-display font-semibold text-gray-900 text-sm mb-1">
+                {t("Fresh Breakfast Box", "تازہ ناشتہ بکس")}
+              </h4>
+              <p className="text-xs text-gray-600 font-body mb-2 line-clamp-2">
+                {t("Healthy fruits and fresh ingredients", "صحت مند پھل اور تازہ اجزاء")}
+              </p>
+              
+              <div className="flex items-center justify-between mb-2">
+                <div className="flex items-center space-x-2">
+                  <span className="text-xs text-gray-500 line-through">
+                    Rs. 250
+                  </span>
+                  <span className="text-lg font-display font-bold text-emerald-600">
+                    Rs. 200
+                  </span>
+                </div>
+                <div className="flex items-center space-x-1">
+                  <ApperIcon name="Star" size={12} className="text-warning fill-current" />
+                  <span className="text-xs text-gray-600">4.6</span>
+                </div>
+              </div>
+              
+              <div className="flex items-center justify-between mb-2">
+                <Badge variant="secondary" size="sm" className="text-xs">
+                  <ApperIcon name="Award" size={10} className="mr-1" />
+                  20 {t("Points", "پوائنٹس")}
+                </Badge>
+                <span className="text-xs text-emerald-600 font-medium">
+                  {t("Save", "بچت")} Rs. 50
+                </span>
+              </div>
+              
+              <Button 
+                variant="primary" 
+                size="sm" 
+                onClick={() => addToCart({
+                  Id: 103,
+                  name: "Fresh Breakfast Box",
+                  price: 200,
+                  originalPrice: 250,
+                  weightOptions: ["box"],
+                  images: ["https://images.unsplash.com/photo-1506084868230-bb9d95c24759?w=400"]
+                }, 1, "box")}
+                className="w-full mt-2"
+              >
+                <ApperIcon name="Plus" size={14} className="mr-1" />
+                {t("Add to Cart", "کارٹ میں شامل کریں")}
+              </Button>
+            </div>
+          </div>
         </div>
       </div>
 
-      {/* Featured Products */}
+      {/* Featured Products - Limited to 4 Items */}
       <div className="px-4">
         <div className="flex items-center justify-between mb-4">
           <h2 className="text-xl font-display font-bold text-gray-900">
@@ -494,7 +647,7 @@ src={deal.images[0]}
         </div>
         
         <div className="grid grid-cols-2 gap-4">
-          {products.slice(0, 6).map((product) => (
+          {products.slice(0, 4).map((product) => (
             <ProductCard key={product.Id} product={product} />
           ))}
         </div>
