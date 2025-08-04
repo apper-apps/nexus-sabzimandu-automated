@@ -524,24 +524,6 @@ function ActiveSubscriptionCard({ subscription, onPause, onResume, onCancel, onA
           </p>
         </div>
       )}
-    </Card>
+</Card>
   );
-}
-
-function getFrequencyText(frequency) {
-  switch (frequency) {
-    case "weekly": return "Weekly";
-    case "bi-weekly": return "Bi-weekly";
-    case "monthly": return "Monthly";
-    default: return frequency;
-  }
-}
-
-function getStatusColor(status) {
-  switch (status) {
-    case "active": return "success";
-    case "paused": return "warning";
-    case "cancelled": return "error";
-    default: return "secondary";
-  }
 }
