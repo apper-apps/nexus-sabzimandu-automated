@@ -1,0 +1,138 @@
+[
+  {
+    "Id": 1,
+    "userId": "user123",
+    "items": [
+      {
+        "productId": 1,
+        "productName": "Fresh Tomatoes",
+        "quantity": 2,
+        "selectedWeight": "1kg",
+        "price": 80
+      },
+      {
+        "productId": 5,
+        "productName": "Fresh Carrots", 
+        "quantity": 1,
+        "selectedWeight": "1kg",
+        "price": 90
+      }
+    ],
+    "totalAmount": 400,
+    "deliveryAddress": {
+      "name": "Muhammad Ali",
+      "phone": "03001234567",
+      "address": "House 123, Block B, Gulberg",
+      "city": "Lahore"
+    },
+    "deliverySlot": "10:00 AM - 12:00 PM",
+    "paymentMethod": "cod",
+    "paymentStatus": "pending",
+    "transactionId": "",
+    "orderStatus": "confirmed",
+    "createdAt": "2024-01-16T08:30:00Z",
+    "updatedAt": "2024-01-16T08:30:00Z"
+  },
+  {
+    "Id": 2,
+    "userId": "user123",
+    "items": [
+      {
+        "productId": 10,
+        "productName": "Organic Apples",
+        "quantity": 1,
+        "selectedWeight": "2kg",
+        "price": 280
+      },
+      {
+        "productId": 14,
+        "productName": "Fresh Lemons",
+        "quantity": 2,
+        "selectedWeight": "500g",
+        "price": 200
+      }
+    ],
+    "totalAmount": 830,
+    "deliveryAddress": {
+      "name": "Fatima Khan",
+      "phone": "03009876543",
+      "address": "Flat 45, DHA Phase 5",
+      "city": "Karachi"
+    },
+    "deliverySlot": "2:00 PM - 4:00 PM",
+    "paymentMethod": "jazzcash",
+    "paymentStatus": "paid",
+    "transactionId": "JC123456789",
+    "orderStatus": "preparing",
+    "createdAt": "2024-01-15T14:20:00Z",
+    "updatedAt": "2024-01-15T15:45:00Z"
+  },
+  {
+    "Id": 3,
+    "userId": "user123",
+    "items": [
+      {
+        "productId": 6,
+        "productName": "Basmati Rice",
+        "quantity": 1,
+        "selectedWeight": "5kg",
+        "price": 180
+      },
+      {
+        "productId": 13,
+        "productName": "Whole Wheat Flour",
+        "quantity": 1,
+        "selectedWeight": "10kg",
+        "price": 90
+      }
+    ],
+    "totalAmount": 1220,
+    "deliveryAddress": {
+      "name": "Ahmed Hassan",
+      "phone": "03111234567",
+      "address": "Street 15, F-8/2",
+      "city": "Islamabad"
+    },
+    "deliverySlot": "6:00 PM - 8:00 PM",
+    "paymentMethod": "easypaisa",
+    "paymentStatus": "paid",
+    "transactionId": "EP987654321",
+    "orderStatus": "shipped",
+    "createdAt": "2024-01-14T11:15:00Z",
+    "updatedAt": "2024-01-15T09:30:00Z"
+  },
+  {
+    "Id": 4,
+    "userId": "user123",
+    "items": [
+      {
+        "productId": 2,
+        "productName": "Organic Spinach",
+        "quantity": 3,
+        "selectedWeight": "1 bunch",
+        "price": 120
+      },
+      {
+        "productId": 15,
+        "productName": "Fresh Mint",
+        "quantity": 2,
+        "selectedWeight": "1 bunch",
+        "price": 80
+      }
+    ],
+    "totalAmount": 670,
+    "deliveryAddress": {
+      "name": "Sara Malik",
+      "phone": "03456789012",
+      "address": "Model Town, Block C",
+      "city": "Lahore"
+    },
+    "deliverySlot": "8:00 AM - 10:00 AM",
+    "paymentMethod": "cod",
+    "paymentStatus": "pending",
+    "transactionId": "",
+    "orderStatus": "delivered",
+    "createdAt": "2024-01-13T16:45:00Z",
+    "updatedAt": "2024-01-14T10:30:00Z"
+  }
+]

@@ -1,0 +1,62 @@
+[
+  {
+    "Id": 1,
+    "name": "Fresh Vegetables",
+    "nameUrdu": "تازہ سبزیاں",
+    "slug": "vegetables",
+    "icon": "Carrot",
+    "productCount": 8,
+    "description": "Farm fresh vegetables delivered daily",
+    "descriptionUrdu": "روزانہ فراہم کی جانے والی تازہ سبزیاں"
+  },
+  {
+    "Id": 2,
+    "name": "Fresh Fruits",
+    "nameUrdu": "تازہ پھل",
+    "slug": "fruits",
+    "icon": "Apple",
+    "productCount": 5,
+    "description": "Seasonal fruits picked at perfect ripeness",
+    "descriptionUrdu": "موسمی پھل مکمل پکے ہوئے"
+  },
+  {
+    "Id": 3,
+    "name": "Organic Products",
+    "nameUrdu": "آرگینک مصنوعات",
+    "slug": "organic",
+    "icon": "Leaf",
+    "productCount": 6,
+    "description": "Certified organic produce without chemicals",
+    "descriptionUrdu": "کیمیکل فری آرگینک اجناس"
+  },
+  {
+    "Id": 4,
+    "name": "Household Items",
+    "nameUrdu": "گھریلو اشیاء",
+    "slug": "household",
+    "icon": "Home",
+    "productCount": 2,
+    "description": "Essential household and pantry items",
+    "descriptionUrdu": "ضروری گھریلو سامان"
+  },
+  {
+    "Id": 5,
+    "name": "Herbs & Spices",
+    "nameUrdu": "جڑی بوٹیاں اور مصالحے",
+    "slug": "herbs",
+    "icon": "Sparkles",
+    "productCount": 3,
+    "description": "Fresh herbs and quality spices",
+    "descriptionUrdu": "تازہ جڑی بوٹیاں اور معیاری مصالحے"
+  },
+  {
+    "Id": 6,
+    "name": "Dairy Products",
+    "nameUrdu": "دودھ کی مصنوعات",
+    "slug": "dairy",
+    "icon": "Milk",
+    "productCount": 0,
+    "description": "Fresh dairy products from local farms",
+    "descriptionUrdu": "مقامی فارموں سے تازہ دودھ کی مصنوعات"
+  }
+]

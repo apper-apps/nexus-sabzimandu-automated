@@ -1,0 +1,288 @@
+[
+  {
+    "Id": 1,
+    "name": "Fresh Tomatoes",
+    "nameUrdu": "تازہ ٹماٹر",
+    "category": "vegetables",
+    "price": 80,
+    "unit": "kg",
+    "weightOptions": ["500g", "1kg", "2kg", "5kg"],
+    "stockLevel": 45,
+    "harvestDate": "2024-01-15",
+    "vendorId": "vendor1",
+    "vendorName": "Farmer Ahmed",
+    "isOrganic": false,
+    "certification": "PSQCA Certified",
+    "images": [
+      "https://images.unsplash.com/photo-1592924357228-91a4daadcfea?w=400&h=400&fit=crop",
+      "https://images.unsplash.com/photo-1546470427-e9dcc676e4d2?w=400&h=400&fit=crop"
+    ],
+    "rating": 4.5
+  },
+  {
+    "Id": 2,
+    "name": "Organic Spinach",
+    "nameUrdu": "آرگینک پالک",
+    "category": "vegetables",
+    "price": 120,
+    "unit": "bunch",
+    "weightOptions": ["1 bunch", "2 bunches", "5 bunches"],
+    "stockLevel": 25,
+    "harvestDate": "2024-01-16",
+    "vendorId": "vendor2",
+    "vendorName": "Green Valley Farm",
+    "isOrganic": true,
+    "certification": "EU Organic",
+    "images": [
+      "https://images.unsplash.com/photo-1576045057995-568f588f82fb?w=400&h=400&fit=crop"
+    ],
+    "rating": 4.8
+  },
+  {
+    "Id": 3,
+    "name": "Fresh Mangoes",
+    "nameUrdu": "تازہ آم",
+    "category": "fruits",
+    "price": 300,
+    "unit": "kg",
+    "weightOptions": ["1kg", "2kg", "5kg", "10kg"],
+    "stockLevel": 30,
+    "harvestDate": "2024-01-14",
+    "vendorId": "vendor3",
+    "vendorName": "Mango Paradise",
+    "isOrganic": false,
+    "certification": "Farm Fresh",
+    "images": [
+      "https://images.unsplash.com/photo-1553279293-2e4e01d1bb5e?w=400&h=400&fit=crop"
+    ],
+    "rating": 4.7
+  },
+  {
+    "Id": 4,
+    "name": "Red Onions",
+    "nameUrdu": "سرخ پیاز",
+    "category": "vegetables",
+    "price": 60,
+    "unit": "kg",
+    "weightOptions": ["500g", "1kg", "2kg", "5kg"],
+    "stockLevel": 80,
+    "harvestDate": "2024-01-10",
+    "vendorId": "vendor1",
+    "vendorName": "Farmer Ahmed",
+    "isOrganic": false,
+    "certification": "Quality Assured",
+    "images": [
+      "https://images.unsplash.com/photo-1518977822534-7049a61ee0a2?w=400&h=400&fit=crop"
+    ],
+    "rating": 4.2
+  },
+  {
+    "Id": 5,
+    "name": "Fresh Carrots",
+    "nameUrdu": "تازہ گاجر",
+    "category": "vegetables",
+    "price": 90,
+    "unit": "kg",
+    "weightOptions": ["500g", "1kg", "2kg"],
+    "stockLevel": 55,
+    "harvestDate": "2024-01-16",
+    "vendorId": "vendor4",
+    "vendorName": "Sunrise Vegetables",
+    "isOrganic": true,
+    "certification": "Organic Certified",
+    "images": [
+      "https://images.unsplash.com/photo-1598170845058-32b9d6a5da37?w=400&h=400&fit=crop"
+    ],
+    "rating": 4.6
+  },
+  {
+    "Id": 6,
+    "name": "Basmati Rice",
+    "nameUrdu": "بسمتی چاول",
+    "category": "household",
+    "price": 180,
+    "unit": "kg",
+    "weightOptions": ["1kg", "5kg", "10kg", "25kg"],
+    "stockLevel": 100,
+    "harvestDate": "2024-01-01",
+    "vendorId": "vendor5",
+    "vendorName": "Premium Rice Co.",
+    "isOrganic": false,
+    "certification": "Premium Quality",
+    "images": [
+      "https://images.unsplash.com/photo-1586201375761-83865001e31c?w=400&h=400&fit=crop"
+    ],
+    "rating": 4.9
+  },
+  {
+    "Id": 7,
+    "name": "Fresh Bananas",
+    "nameUrdu": "تازہ کیلے",
+    "category": "fruits",
+    "price": 120,
+    "unit": "dozen",
+    "weightOptions": ["6 pieces", "12 pieces", "24 pieces"],
+    "stockLevel": 40,
+    "harvestDate": "2024-01-15",
+    "vendorId": "vendor6",
+    "vendorName": "Tropical Fruits",
+    "isOrganic": false,
+    "certification": "Fresh Guarantee",
+    "images": [
+      "https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?w=400&h=400&fit=crop"
+    ],
+    "rating": 4.4
+  },
+  {
+    "Id": 8,
+    "name": "Green Chilies",
+    "nameUrdu": "ہری مرچ",
+    "category": "vegetables",
+    "price": 200,
+    "unit": "kg",
+    "weightOptions": ["250g", "500g", "1kg"],
+    "stockLevel": 20,
+    "harvestDate": "2024-01-16",
+    "vendorId": "vendor7",
+    "vendorName": "Spice Garden",
+    "isOrganic": true,
+    "certification": "Organic Spice",
+    "images": [
+      "https://images.unsplash.com/photo-1583638529602-ff0d45a7fbc0?w=400&h=400&fit=crop"
+    ],
+    "rating": 4.3
+  },
+  {
+    "Id": 9,
+    "name": "Fresh Potatoes",
+    "nameUrdu": "تازہ آلو",
+    "category": "vegetables",
+    "price": 50,
+    "unit": "kg",
+    "weightOptions": ["1kg", "2kg", "5kg", "10kg"],
+    "stockLevel": 120,
+    "harvestDate": "2024-01-12",
+    "vendorId": "vendor1",
+    "vendorName": "Farmer Ahmed",
+    "isOrganic": false,
+    "certification": "Farm Fresh",
+    "images": [
+      "https://images.unsplash.com/photo-1518977676601-b53f82aba655?w=400&h=400&fit=crop"
+    ],
+    "rating": 4.0
+  },
+  {
+    "Id": 10,
+    "name": "Organic Apples",
+    "nameUrdu": "آرگینک سیب",
+    "category": "fruits",
+    "price": 280,
+    "unit": "kg",
+    "weightOptions": ["500g", "1kg", "2kg", "5kg"],
+    "stockLevel": 35,
+    "harvestDate": "2024-01-13",
+    "vendorId": "vendor8",
+    "vendorName": "Mountain Orchards",
+    "isOrganic": true,
+    "certification": "EU Organic",
+    "images": [
+      "https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?w=400&h=400&fit=crop"
+    ],
+    "rating": 4.8
+  },
+  {
+    "Id": 11,
+    "name": "Fresh Ginger",
+    "nameUrdu": "تازہ ادرک",
+    "category": "vegetables",
+    "price": 350,
+    "unit": "kg",
+    "weightOptions": ["100g", "250g", "500g", "1kg"],
+    "stockLevel": 15,
+    "harvestDate": "2024-01-14",
+    "vendorId": "vendor7",
+    "vendorName": "Spice Garden",
+    "isOrganic": true,
+    "certification": "Organic Certified",
+    "images": [
+      "https://images.unsplash.com/photo-1611824141727-7b52ac6d9ae0?w=400&h=400&fit=crop"
+    ],
+    "rating": 4.6
+  },
+  {
+    "Id": 12,
+    "name": "Fresh Oranges",
+    "nameUrdu": "تازہ سنتری",
+    "category": "fruits",
+    "price": 150,
+    "unit": "kg",
+    "weightOptions": ["1kg", "2kg", "5kg"],
+    "stockLevel": 60,
+    "harvestDate": "2024-01-15",
+    "vendorId": "vendor9",
+    "vendorName": "Citrus Valley",
+    "isOrganic": false,
+    "certification": "Vitamin Rich",
+    "images": [
+      "https://images.unsplash.com/photo-1547514701-42782101795e?w=400&h=400&fit=crop"
+    ],
+    "rating": 4.5
+  },
+  {
+    "Id": 13,
+    "name": "Whole Wheat Flour",
+    "nameUrdu": "گندم کا آٹا",
+    "category": "household",
+    "price": 90,
+    "unit": "kg",
+    "weightOptions": ["5kg", "10kg", "20kg", "40kg"],
+    "stockLevel": 200,
+    "harvestDate": "2024-01-01",
+    "vendorId": "vendor10",
+    "vendorName": "Golden Mills",
+    "isOrganic": false,
+    "certification": "Pure & Natural",
+    "images": [
+      "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=400&h=400&fit=crop"
+    ],
+    "rating": 4.7
+  },
+  {
+    "Id": 14,
+    "name": "Fresh Lemons",
+    "nameUrdu": "تازہ نیبو",
+    "category": "fruits",
+    "price": 200,
+    "unit": "kg",
+    "weightOptions": ["250g", "500g", "1kg", "2kg"],
+    "stockLevel": 25,
+    "harvestDate": "2024-01-16",
+    "vendorId": "vendor9",
+    "vendorName": "Citrus Valley",
+    "isOrganic": true,
+    "certification": "Organic Citrus",
+    "images": [
+      "https://images.unsplash.com/photo-1541544181051-e46607cf0db4?w=400&h=400&fit=crop"
+    ],
+    "rating": 4.4
+  },
+  {
+    "Id": 15,
+    "name": "Fresh Mint",
+    "nameUrdu": "تازہ پودینہ",
+    "category": "vegetables",
+    "price": 80,
+    "unit": "bunch",
+    "weightOptions": ["1 bunch", "2 bunches", "5 bunches"],
+    "stockLevel": 18,
+    "harvestDate": "2024-01-16",
+    "vendorId": "vendor11",
+    "vendorName": "Herb Garden",
+    "isOrganic": true,
+    "certification": "Organic Herbs",
+    "images": [
+      "https://images.unsplash.com/photo-1628556270448-4d4e4148e1b1?w=400&h=400&fit=crop"
+    ],
+    "rating": 4.3
+  }
+]
