@@ -1,83 +1,157 @@
 [
   {
     "Id": 1,
-    "name": "Fresh Tomatoes",
-    "nameUrdu": "تازہ ٹماٹر",
-    "category": "vegetables",
-    "price": 80,
+    "name": "Fresh Organic Tomatoes",
+    "category": "Vegetables",
+    "price": 45,
+    "originalPrice": 55,
     "unit": "kg",
-    "weightOptions": ["500g", "1kg", "2kg", "5kg"],
-    "stockLevel": 45,
-    "harvestDate": "2024-01-15",
-    "vendorId": "vendor1",
-    "vendorName": "Farmer Ahmed",
-    "isOrganic": false,
-    "certification": "PSQCA Certified",
+    "description": "Farm-fresh organic tomatoes, perfect for cooking and salads. Grown without pesticides in rich, fertile soil.",
     "images": [
-      "https://images.unsplash.com/photo-1592924357228-91a4daadcfea?w=400&h=400&fit=crop",
-      "https://images.unsplash.com/photo-1546470427-e9dcc676e4d2?w=400&h=400&fit=crop"
+      "https://images.unsplash.com/photo-1546094096-0df4bcaaa337?w=400",
+      "https://images.unsplash.com/photo-1592924357228-91a4daadcfea?w=400"
     ],
-    "rating": 4.5
-  },
-  {
-    "Id": 2,
-    "name": "Organic Spinach",
-    "nameUrdu": "آرگینک پالک",
-    "category": "vegetables",
-    "price": 120,
-    "unit": "bunch",
-    "weightOptions": ["1 bunch", "2 bunches", "5 bunches"],
-    "stockLevel": 25,
-    "harvestDate": "2024-01-16",
-    "vendorId": "vendor2",
-    "vendorName": "Green Valley Farm",
+    "inStock": true,
+    "discount": 18,
     "isOrganic": true,
-    "certification": "EU Organic",
-    "images": [
-      "https://images.unsplash.com/photo-1576045057995-568f588f82fb?w=400&h=400&fit=crop"
+    "rating": 4.8,
+    "reviewCount": 124,
+    "vendorName": "Green Valley Farms",
+    "origin": "Punjab, India",
+    "harvestDate": "2024-01-15",
+    "shelfLife": "5-7 days",
+    "nutritionalInfo": {
+      "calories": 18,
+      "protein": "0.9g",
+      "carbs": "3.9g",
+      "fiber": "1.2g",
+      "vitaminC": "28mg"
+    },
+    "storageInstructions": "Store in a cool, dry place. Refrigerate for longer freshness.",
+    "certifications": ["Organic", "Non-GMO"],
+    "availableWeights": [
+      { "weight": "500g", "price": 25 },
+      { "weight": "1kg", "price": 45 },
+      { "weight": "2kg", "price": 85 }
     ],
-    "rating": 4.8
+    "tags": ["organic", "fresh", "local", "pesticide-free"],
+    "preparationTips": "Wash thoroughly before use. Great for salads, cooking, and making fresh sauces.",
+    "seasonality": "Year-round availability",
+    "farmer": {
+      "name": "Rajesh Kumar",
+      "title": "Organic Farmer & Founder",
+      "profileImage": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200",
+      "location": "Green Valley, Punjab",
+      "experience": 15,
+      "farmSize": 25,
+      "farmingMethod": "Certified Organic",
+      "distance": "45 km",
+      "deliveryTime": "Same day",
+      "phone": "+91-98765-43210",
+      "email": "rajesh@greenvalleyfarms.com",
+      "certifications": ["Organic Certified", "FSSAI Approved", "Fair Trade"],
+      "story": "Started farming 15 years ago with just 2 acres of inherited land. My passion for chemical-free farming began when my daughter was born - I wanted to ensure the next generation had access to truly healthy food.\n\nOur farm follows traditional organic methods combined with modern sustainable practices. We use natural compost, crop rotation, and integrated pest management to maintain soil health and produce the finest vegetables.\n\nEvery tomato is hand-picked at peak ripeness and delivered within hours of harvest. We believe in transparency, quality, and building trust with our customers through consistent excellence.",
+      "practices": [
+        "100% Organic cultivation",
+        "Natural composting methods",
+        "Rainwater harvesting",
+        "Integrated pest management",
+        "Crop rotation system",
+        "Solar-powered irrigation"
+      ],
+      "farmImages": [
+        {
+          "url": "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=400",
+          "caption": "Organic tomato fields"
+        },
+        {
+          "url": "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=400",
+          "caption": "Natural composting area"
+        },
+        {
+          "url": "https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=400",
+          "caption": "Farm processing facility"
+        }
+      ]
+    }
+  },
+{
+    "Id": 2,
+    "name": "Farm Fresh Spinach",
+    "category": "Vegetables",
+    "price": 35,
+    "originalPrice": 40,
+    "unit": "bunch",
+    "description": "Crisp, nutritious spinach leaves packed with iron and vitamins. Perfect for salads, smoothies, and cooking.",
+    "images": [
+      "https://images.unsplash.com/photo-1576045057995-568f588f82fb?w=400",
+      "https://images.unsplash.com/photo-1505503693641-1926193e8d57?w=400"
+    ],
+    "inStock": true,
+    "discount": 12,
+    "isOrganic": true,
+    "rating": 4.6,
+    "reviewCount": 89,
+    "vendorName": "Healthy Greens Co",
+    "origin": "Haryana, India",
+    "harvestDate": "2024-01-14",
+    "shelfLife": "3-5 days",
+    "nutritionalInfo": {
+      "calories": 23,
+      "protein": "2.9g",
+      "carbs": "3.6g",
+      "fiber": "2.2g",
+      "iron": "2.7mg"
+    },
+    "storageInstructions": "Keep refrigerated. Wash before use.",
+    "certifications": ["Organic"],
+    "availableWeights": [
+      { "weight": "250g", "price": 35 },
+      { "weight": "500g", "price": 65 }
+    ],
+    "tags": ["organic", "leafy", "iron-rich", "fresh"],
+    "preparationTips": "Great for smoothies, salads, and sautéing. Remove thick stems before cooking.",
+    "seasonality": "Winter season (Nov-Feb)",
+    "farmer": {
+      "name": "Priya Sharma",
+      "title": "Leafy Greens Specialist",
+      "profileImage": "https://images.unsplash.com/photo-1494790108755-2616b612b547?w=200",
+      "location": "Healthy Greens, Haryana",
+      "experience": 8,
+      "farmSize": 12,
+      "farmingMethod": "Hydroponic Organic",
+      "distance": "32 km",
+      "deliveryTime": "Next day",
+      "phone": "+91-98234-56789",
+      "email": "priya@healthygreens.co.in",
+      "certifications": ["Organic Certified", "Hydroponic Specialist", "Women Farmer Award"],
+      "story": "As a second-generation farmer, I revolutionized our family farm by introducing hydroponic systems for leafy greens. This allows us to grow pesticide-free vegetables year-round with 90% less water usage.\n\nOur controlled environment ensures consistent quality and eliminates seasonal dependency. Each spinach bunch is harvested at optimal nutrient density and reaches customers within 24 hours.\n\nI'm passionate about sustainable farming and empowering women in agriculture. Our farm employs 15 local women and provides training in modern farming techniques.",
+      "practices": [
+        "Hydroponic cultivation",
+        "Water-efficient systems",
+        "Climate-controlled growing",
+        "Zero pesticide policy",
+        "Solar energy powered",
+        "Women-led workforce"
+      ],
+      "farmImages": [
+        {
+          "url": "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=400",
+          "caption": "Hydroponic spinach beds"
+        },
+        {
+          "url": "https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=400",
+          "caption": "Climate controlled facility"
+        },
+        {
+          "url": "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=400",
+          "caption": "Quality control lab"
+        }
+      ]
+    }
   },
   {
     "Id": 3,
-    "name": "Fresh Mangoes",
-    "nameUrdu": "تازہ آم",
-    "category": "fruits",
-    "price": 300,
-    "unit": "kg",
-    "weightOptions": ["1kg", "2kg", "5kg", "10kg"],
-    "stockLevel": 30,
-    "harvestDate": "2024-01-14",
-    "vendorId": "vendor3",
-    "vendorName": "Mango Paradise",
-    "isOrganic": false,
-    "certification": "Farm Fresh",
-    "images": [
-      "https://images.unsplash.com/photo-1553279293-2e4e01d1bb5e?w=400&h=400&fit=crop"
-    ],
-    "rating": 4.7
-  },
-  {
-    "Id": 4,
-    "name": "Red Onions",
-    "nameUrdu": "سرخ پیاز",
-    "category": "vegetables",
-    "price": 60,
-    "unit": "kg",
-    "weightOptions": ["500g", "1kg", "2kg", "5kg"],
-    "stockLevel": 80,
-    "harvestDate": "2024-01-10",
-    "vendorId": "vendor1",
-    "vendorName": "Farmer Ahmed",
-    "isOrganic": false,
-    "certification": "Quality Assured",
-    "images": [
-      "https://images.unsplash.com/photo-1518977822534-7049a61ee0a2?w=400&h=400&fit=crop"
-    ],
-    "rating": 4.2
-  },
-  {
-    "Id": 5,
     "name": "Fresh Carrots",
     "nameUrdu": "تازہ گاجر",
     "category": "vegetables",

@@ -10,6 +10,7 @@ import { useCart } from "@/hooks/useCart";
 import { useLanguage } from "@/hooks/useLanguage";
 import { cn } from "@/utils/cn";
 import { whatsappService } from "@/services/api/whatsappService";
+import FarmStoryModal from "@/components/molecules/FarmStoryModal";
 
 const ProductDetail = () => {
   const { id } = useParams();
@@ -17,13 +18,13 @@ const ProductDetail = () => {
   const { addToCart, getItemCount } = useCart();
   const { t } = useLanguage();
   
-  const [product, setProduct] = useState(null);
+const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [selectedWeight, setSelectedWeight] = useState("");
   const [quantity, setQuantity] = useState(1);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-
+  const [showFarmStoryModal, setShowFarmStoryModal] = useState(false);
   const loadProduct = async () => {
     try {
       setLoading(true);
@@ -131,12 +132,15 @@ const ProductDetail = () => {
           <h1 className="text-2xl font-display font-bold text-gray-900 mb-2">
             {t(product.name, product.nameUrdu)}
           </h1>
-          <p className="text-gray-600 font-body flex items-center">
-            <ApperIcon name="Store" size={16} className="mr-2" />
-            {product.vendorName}
-          </p>
+<button 
+            onClick={() => setShowFarmStoryModal(true)}
+            className="text-gray-600 font-body flex items-center hover:text-primary transition-colors group"
+          >
+            <ApperIcon name="Store" size={16} className="mr-2 group-hover:text-primary" />
+            <span className="underline">{product.vendorName}</span>
+            <ApperIcon name="ExternalLink" size={14} className="ml-1 opacity-0 group-hover:opacity-100 transition-opacity" />
+          </button>
         </div>
-
         {/* Rating */}
         <div className="flex items-center space-x-2">
           <div className="flex items-center space-x-1">
@@ -315,7 +319,14 @@ onClick={() => {
             {t("View WhatsApp Catalog", "واٹس ایپ کیٹالاگ دیکھیں")}
           </Button>
         </div>
-      </div>
+</div>
+
+      {/* Farm Story Modal */}
+      <FarmStoryModal
+        isOpen={showFarmStoryModal}
+        onClose={() => setShowFarmStoryModal(false)}
+        farmer={product?.farmer}
+      />
     </div>
   );
 };
