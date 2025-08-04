@@ -117,17 +117,34 @@ const Cart = () => {
         </div>
       </div>
 
-      {/* Checkout Button */}
+{/* Action Buttons */}
       <div className="fixed bottom-20 left-0 right-0 p-4 bg-white border-t border-gray-200">
-        <Button 
-          variant="primary" 
-          onClick={() => navigate("/checkout")}
-          className="w-full"
-          size="lg"
-        >
-          <ApperIcon name="CreditCard" size={20} className="mr-2" />
-          {t("Proceed to Checkout", "چیک آؤٹ کی طرف بڑھیں")}
-        </Button>
+        <div className="space-y-3">
+          {/* WhatsApp Order Button */}
+          <Button 
+            variant="primary" 
+            onClick={() => {
+              const { whatsappService } = require('@/services/api/whatsappService');
+              whatsappService.openCartOrderInWhatsApp(items, totalPrice, {});
+            }}
+            className="w-full bg-green-500 hover:bg-green-600 text-white"
+            size="lg"
+          >
+            <ApperIcon name="MessageCircle" size={20} className="mr-2" />
+            {t("Order via WhatsApp", "واٹس ایپ سے آرڈر کریں")}
+          </Button>
+          
+          {/* Traditional Checkout Button */}
+          <Button 
+            variant="outline" 
+            onClick={() => navigate("/checkout")}
+            className="w-full"
+            size="lg"
+          >
+            <ApperIcon name="CreditCard" size={20} className="mr-2" />
+            {t("Traditional Checkout", "روایتی چیک آؤٹ")}
+          </Button>
+        </div>
       </div>
     </div>
   );

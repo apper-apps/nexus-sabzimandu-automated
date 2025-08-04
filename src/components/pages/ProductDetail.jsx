@@ -283,6 +283,17 @@ const ProductDetail = () => {
               </>
             )}
           </Button>
+<Button 
+            variant="secondary" 
+            onClick={() => {
+              const { whatsappService } = require('@/services/api/whatsappService');
+              whatsappService.openProductInWhatsApp(product, selectedWeight, quantity);
+            }}
+            className="flex-1 bg-green-500 hover:bg-green-600 text-white"
+          >
+            <ApperIcon name="MessageCircle" size={16} className="mr-2" />
+            {t("Order via WhatsApp", "واٹس ایپ سے آرڈر")}
+          </Button>
           <Button 
             variant="primary" 
             onClick={handleBuyNow}
@@ -290,6 +301,18 @@ const ProductDetail = () => {
           >
             <ApperIcon name="Zap" size={16} className="mr-2" />
             {t("Buy Now", "ابھی خریدیں")}
+          </Button>
+        </div>
+        
+        {/* WhatsApp Catalog Access */}
+        <div className="mt-3">
+          <Button 
+            variant="outline" 
+            onClick={() => navigate("/whatsapp-catalog")}
+            className="w-full"
+          >
+            <ApperIcon name="Catalog" size={16} className="mr-2" />
+            {t("View WhatsApp Catalog", "واٹس ایپ کیٹالاگ دیکھیں")}
           </Button>
         </div>
       </div>

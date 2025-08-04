@@ -11,6 +11,7 @@ import Orders from "@/components/pages/Orders";
 import Account from "@/components/pages/Account";
 import OrderConfirmation from "@/components/pages/OrderConfirmation";
 import LoyaltyPoints from "@/components/pages/LoyaltyPoints";
+import WhatsAppCatalog from "@/components/pages/WhatsAppCatalog";
 import { CartProvider } from "@/hooks/useCart";
 import { LanguageProvider } from "@/hooks/useLanguage";
 function App() {

@@ -184,8 +184,13 @@ const getTotalItems = () => {
     return item ? item.quantity : 0;
   };
 
+  const generateWhatsAppMessage = (customerInfo = {}) => {
+    const { whatsappService } = require('@/services/api/whatsappService');
+    return whatsappService.formatCartOrderMessage(state.items, getTotalPrice(), customerInfo);
+  };
+
   return (
-    <CartContext.Provider value={{
+<CartContext.Provider value={{
       items: state.items,
       addToCart,
       addBundleToCart,
@@ -194,7 +199,8 @@ const getTotalItems = () => {
       clearCart,
       getTotalItems,
       getTotalPrice,
-      getItemCount
+      getItemCount,
+      generateWhatsAppMessage
     }}>
       {children}
     </CartContext.Provider>
